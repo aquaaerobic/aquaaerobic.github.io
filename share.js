@@ -9,8 +9,16 @@ function get(name){
     if(num>=0) return url.substr(0,num);
     if(num<0)  return url;
 }
+
+//v4.0 Add popup describing app when visitors load webpage the first time
+window.onload = function() {
+    populateshoppinglistonload();
+};
+function populateshoppinglistonload()
+{
  var geturl = get("id");
  var website = "https://www.ckonkol.com/aquareference/capture.php?id=" + geturl;
  document.getElementById("MyList").innerHTML = '';
- document.getElementById("MyList").innerHTML = '<iframe src=' + website + ' width="200" height="200"></iframe>';
+ document.getElementById("MyList").innerHTML = '<iframe src=' + website + ' width="200" height="200"></iframe>';   
+}
  
