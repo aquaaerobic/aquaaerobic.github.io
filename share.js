@@ -17,8 +17,7 @@ window.onload = function() {
 function populateshoppinglistonload()
 {
  var geturl = get("id");
- var website = "https://www.ckonkol.com/aquareference/capture.php?id=" + geturl;
  document.getElementById("MyList").innerHTML = '';
- document.getElementById("MyList").innerHTML = '<iframe src=' + website + ' width="200" height="200"></iframe>';   
+ document.getElementById("MyList").innerHTML = '<iframe src=' + geturl + ' width="200" height="200"></iframe>';   
 }
  
