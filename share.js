@@ -18,6 +18,6 @@ function populateshoppinglistonload()
 {
  var geturl = get("id");
  document.getElementById("MyList").innerHTML = '';
- document.getElementById("MyList").innerHTML = '<iframe src=' + geturl + ' width="200" height="200"></iframe>';   
+ document.getElementById("MyList").innerHTML = '<iframe src=' + geturl + ' width="100%" height="1200"></iframe>';   
 }
  
