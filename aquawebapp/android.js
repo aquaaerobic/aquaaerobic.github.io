@@ -1,9 +1,4 @@
-window.onload = function() {
-    loadFirebase();
-};
-
-function loadFirebase{
-    var config = {
+var config = {
     apiKey: "AIzaSyCBPpzOO2yZbOiNjRlbOooay_aEbq4Ah-k",
     authDomain: "aquaguideandroid.firebaseapp.com",
     databaseURL: "https://aquaguideandroid.firebaseio.com",
@@ -14,7 +9,6 @@ function loadFirebase{
     firebase.initializeApp(config);
     var db = firebase.database();
     alert("Hello");
-}
 
 //aquaguideandroid/database/aquaguideandroid/data/message
 //db.ref("-Users/-message").set("NOTIFICATION: NEW AquaNereda Video Presented by Terry Reid, P.E.");
