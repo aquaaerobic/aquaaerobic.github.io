@@ -20,8 +20,8 @@ function validateForm(message) {
     if (x == "") {
         alert("Message must be filled out");
     }else{
-        alert("Message sent");
         db.ref("message").set(x);
          alert("Message sent");
+        document.getElementById("message").innerHTML = ' ';
     }
 }
