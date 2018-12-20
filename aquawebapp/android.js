@@ -21,7 +21,7 @@ function validateForm(message) {
         alert("Message must be filled out");
     }else{
         alert("Message sent");
-        db.ref("message").set("Happy ThanksGiving!");
+        db.ref("message").set(x);
          alert("Message sent");
     }
 }
