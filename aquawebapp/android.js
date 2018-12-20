@@ -8,7 +8,6 @@ var config = {
     };
     firebase.initializeApp(config);
     var db = firebase.database();
-    alert("Type message in available textbox, then submit");
 
 //v4.0 Add popup describing app when visitors load webpage the first time
 window.onload = function() {
