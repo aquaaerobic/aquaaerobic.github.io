@@ -10,9 +10,11 @@ var config = {
     var db = firebase.database();
     alert("Type message in available textbox, then submit");
 
-//aquaguideandroid/database/aquaguideandroid/data/message
-//db.ref("-Users/-message").set("NOTIFICATION: NEW AquaNereda Video Presented by Terry Reid, P.E.");
-//db.ref("message").set("NOTIFICATION: NEW AquaNereda Video Presented by Terry Reid, P.E.");
+//v4.0 Add popup describing app when visitors load webpage the first time
+window.onload = function() {
+    alert("Welcome to 'Aqua One Minute Guide Send Notifcations' App!\n\nType message in available textbox, then submit");
+    clearFocus();
+};
 
 function validateForm(message) {
     var x = message; //document.getElementById("message").value;
@@ -25,3 +27,10 @@ function validateForm(message) {
         document.getElementById("message").innerHTML = ' ';
     }
 }
+function clearFocus()
+{
+  document.getElementById("message").value = "";
+ //  document.getElementById("cost").value = "";
+  document.getElementById("message").focus();
+}
+
