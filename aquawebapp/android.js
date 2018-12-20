@@ -8,7 +8,7 @@ var config = {
     };
     firebase.initializeApp(config);
     var db = firebase.database();
-    alert("Hello");
+    alert("Type message in available textbox and send");
 
 //aquaguideandroid/database/aquaguideandroid/data/message
 //db.ref("-Users/-message").set("NOTIFICATION: NEW AquaNereda Video Presented by Terry Reid, P.E.");
