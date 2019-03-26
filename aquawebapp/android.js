@@ -11,7 +11,7 @@ var config = {
 
 //v4.0 Add popup describing app when visitors load webpage the first time
 window.onload = function() {
-    alert("Welcome to 'Aqua One Minute Guide Send Notifcations' Web App!\n\nType message in available textbox, then submit");
+    alert("Welcome to 'Aqua One Minute Guide Send Android Notifcations' Web App!\n\nType message in available textbox, then submit");
     clearFocus();
 };
 
