@@ -29,4 +29,8 @@ function closeWindow() {
         window.open('','_parent','');
         window.close();
 }
+
+function goBack() {
+  window.history.back();
+}
  
