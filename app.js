@@ -1,7 +1,7 @@
 $(document).ready(function() {
   
           $('html')
-  .append('<center><img src="home.png" width="400"></center>');
+  .append('<center><img src="home.jpg" width="400"></center>');
   
 $('body').css('display', 'none')
 .delay(4000).fadeIn(1000, function() {
