@@ -4,8 +4,8 @@ $(document).ready(function() {
   .append('<center><img src="home.jpg" width="400"></center>');
   
 $('body').css('display', 'none')
-.delay(4000).fadeIn(1000, function() {
-  $('.onLoad').fadeOut(1000);
+.delay(1000).fadeIn(500, function() {
+  $('.onLoad').fadeOut(500);
 });
   
   
