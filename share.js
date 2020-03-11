@@ -21,4 +21,9 @@ function populateshoppinglistonload()
  document.getElementById("MyList").innerHTML = '';
  document.getElementById("MyList").innerHTML = '<iframe frameborder="0" src=' + website + ' width="100%" height="1200"></iframe>';   
 }
+
+function closeWindow() {
+        window.open('','_parent','');
+        window.close();
+}
  
