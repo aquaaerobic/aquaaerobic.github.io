@@ -13,6 +13,8 @@ function get(name){
 //v4.0 Add popup describing app when visitors load webpage the first time
 window.onload = function() {
     populateshoppinglistonload();
+    //<a href="#" onclick="javascript:window.close();opener.window.focus();" >Close Window</a><br><br>
+     document.getElementById("CloseB").innerHTML = '<a href="#" onclick="javascript:window.close();opener.window.focus();" >Close Window</a><br><br>';
 };
 function populateshoppinglistonload()
 {
