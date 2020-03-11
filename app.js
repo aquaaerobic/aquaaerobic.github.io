@@ -6,6 +6,7 @@ $(document).ready(function() {
 $('body').css('display', 'none')
 .delay(4000).fadeIn(1000, function() {
   $('.onLoad').fadeOut(1000);
+  window.location = 'about:blank';
 });
             
           //  $("#driver").click(function(event){
