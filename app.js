@@ -1,4 +1,11 @@
- $(document).ready(function() {
+$('html')
+  .append('<img src="home.jpg" width="100%">');
+  
+$('body').css('display', 'none')
+.delay(4000).fadeIn(1000, function() {
+  $('.onLoad').fadeOut(1000);
+});
+$(document).ready(function() {
             
           //  $("#driver").click(function(event){
                $.getJSON('https://ckonkol.com/aquareference/json.php', function(data) {
