@@ -5,9 +5,11 @@ $(document).ready(function() {
   
 $('body').css('display', 'none')
 .delay(4000).fadeIn(1000, function() {
-  $('html').empty();
   $('.onLoad').fadeOut(1000);
 });
+  
+  
+    $('html').empty();
             
           //  $("#driver").click(function(event){
                $.getJSON('https://ckonkol.com/aquareference/json.php', function(data) {
