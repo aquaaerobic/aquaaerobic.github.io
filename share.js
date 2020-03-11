@@ -14,7 +14,7 @@ function get(name){
 window.onload = function() {
     populateshoppinglistonload();
     //<a href="#" onclick="javascript:window.close();opener.window.focus();" >Close Window</a><br><br>
-     document.getElementById("CloseB").innerHTML = '<a href="#" onclick="javascript:window.close();opener.window.focus();" >Close Window</a><br><br>';
+     document.getElementById("CloseB").innerHTML = '<a href="#" onclick="closeWindow();" >Close Window</a><br><br>';
 };
 function populateshoppinglistonload()
 {
