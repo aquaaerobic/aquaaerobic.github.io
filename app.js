@@ -1,0 +1,24 @@
+ $(document).ready(function() {
+            
+          //  $("#driver").click(function(event){
+               $.getJSON('https://ckonkol.com/aquareference/json.php', function(data) {
+                      var items = [];
+                          $.each( data, function( key, val ) {
+                                 var name = val.aqua_name;
+                                 var menu = val.aqua_menu;
+                                 if (name === menu){
+                                      items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
+                                 }else{
+                                  items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a><br>" );
+                                 }
+                                 
+                          });
+                         
+                          $( "<ul/>", {
+                            "class": "my-new-list",
+                            html: items.join( "" )
+                          }).appendTo( "body" );
+               });
+            });
+                
+        // });
