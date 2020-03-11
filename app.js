@@ -9,10 +9,10 @@ $('body').css('display', 'none')
 });
   
   
-    $('html').empty();
             
           //  $("#driver").click(function(event){
                $.getJSON('https://ckonkol.com/aquareference/json.php', function(data) {
+                  $('html').empty();
                       var items = [];
                           $.each( data, function( key, val ) {
                                  var name = val.aqua_name;
