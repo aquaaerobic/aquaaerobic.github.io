@@ -33,6 +33,7 @@ function populateshoppinglistonload()
 {
  var geturl = get("id");
  var phonename = "Android";
+var myTimestamp = firebase.firestore.Timestamp.fromDate(new Date());
 var d = new Date();
 var datenow = d;
 var section = "";
@@ -45,7 +46,7 @@ var section = "";
                                  var id = val.aqua_key;
                                  if (id === geturl){   
     db.collection("users").add({
-    date: datenow,
+    date: myTimestamp,
     device: phonename,
     visited: name
 })
