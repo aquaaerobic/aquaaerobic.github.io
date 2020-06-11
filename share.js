@@ -45,7 +45,8 @@ var section = "";
                                  var name = val.aqua_name;
                                  var menu = val.aqua_menu;
                                  var id = val.aqua_key;
-                                 if (id === geturl){                               
+                                 if (id === geturl){   
+                                     alert(name);
                                      db.collection("users").add({
     date: datenow,
     device: phonename,
