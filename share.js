@@ -34,9 +34,7 @@ function populateshoppinglistonload()
  var geturl = get("id");
  var phonename = "Android";
 var d = new Date();
-var day = d.toLocaleDateString();
-var time = d.toLocaleTimeString();
-var datenow = day + " " + time;
+var datenow = d.toUTCString();
 var section = "";
 
    $.getJSON('https://ckonkol.com/aquareference/json.php', function(data) {
