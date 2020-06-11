@@ -7,7 +7,9 @@ $('body').css('display', 'none')
   $('.onLoad').fadeOut(500);
 });
   
-  
+var phonename = "Android";
+var datenow = currentDate.toLocaleDateString();
+var section = "";
             
           //  $("#driver").click(function(event){
                $.getJSON('https://ckonkol.com/aquareference/json.php', function(data) {
@@ -16,8 +18,33 @@ $('body').css('display', 'none')
                                  var name = val.aqua_name;
                                  var menu = val.aqua_menu;
                                  if (name === menu){
-                                      items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
+                                      if (name === "CALENDAR OF EVENTS" || name === "CORPORATE NOTIFICATIONS")
+                                      {
+    db.collection("users").add({
+    date: datenow,
+    device: phonename,
+    visited: name
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+                                          items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
+                                      }
                                  }else{
+    db.collection("users").add({
+    date: datenow,
+    device: phonename,
+    visited: name
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
                                   items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a><br>" );
                                  }
                                  
