@@ -46,10 +46,7 @@ var section = "";
                                  var menu = val.aqua_menu;
                                  var id = val.aqua_key;
                                  if (id === geturl){   
-                                    var network = new ActiveXObject('WScript.Network');
-    // Show a pop up if it works
-    alert(network.computerName);
-                                     db.collection("users").add({
+    db.collection("users").add({
     date: datenow,
     device: phonename,
     visited: name
