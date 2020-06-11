@@ -1,3 +1,15 @@
+var firebaseConfig = {
+    apiKey: "AIzaSyBu4FaHCylofeNVO5gHkyS4IYFcYZLOiA4",
+    authDomain: "aquaguide2018.firebaseapp.com",
+    databaseURL: "https://aquaguide2018.firebaseio.com",
+    projectId: "aquaguide2018",
+    storageBucket: "aquaguide2018.appspot.com",
+    messagingSenderId: "333575317068",
+    appId: "1:333575317068:web:5ab37f19fd58d8c96ab6e9"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
 function get(name){
     var url = window.location.search;
     var num = url.search(name);
@@ -20,6 +32,34 @@ window.onload = function() {
 function populateshoppinglistonload()
 {
  var geturl = get("id");
+ var phonename = "Android";
+var d = new Date();
+var day = d.toLocaleDateString();
+var time = d.toLocaleTimeString();
+var datenow = day + " " + time;
+var section = "";
+
+   $.getJSON('https://ckonkol.com/aquareference/json.php', function(data) {
+                      var items = [];
+                          $.each( data, function( key, val ) {
+                                 var name = val.aqua_name;
+                                 var menu = val.aqua_menu;
+                                 var id = val.aqua_id;
+                                 if (id === geturl){                               
+                                     db.collection("users").add({
+    date: datenow,
+    device: phonename,
+    visited: name
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+                                 }
+                          });
+               });
  var website = "https://www.ckonkol.com/aquareference/myaqua.php?id=" + geturl
  document.getElementById("MyList").innerHTML = '';
  document.getElementById("MyList").innerHTML = '<iframe frameborder="0" src=' + website + ' width="100%" height="1200"></iframe>';   
