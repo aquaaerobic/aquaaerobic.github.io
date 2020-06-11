@@ -8,7 +8,7 @@ $('body').css('display', 'none')
 });
   
 var phonename = "Android";
-var datenow = currentDate.toLocaleDateString();
+var datenow = new Date().today() + " @ " + new Date().timeNow();
 var section = "";
             
           //  $("#driver").click(function(event){
