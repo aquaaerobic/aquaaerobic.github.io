@@ -36,31 +36,9 @@ var section = "";
                                  if (name === menu){
                                       if (name === "CALENDAR OF EVENTS" || name === "CORPORATE NOTIFICATIONS")
                                       {
-    db.collection("users").add({
-    date: datenow,
-    device: phonename,
-    visited: name
-})
-.then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
-})
-.catch(function(error) {
-    console.error("Error adding document: ", error);
-});
                                           items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
                                       }
                                  }else{
-    db.collection("users").add({
-    date: datenow,
-    device: phonename,
-    visited: name
-})
-.then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
-})
-.catch(function(error) {
-    console.error("Error adding document: ", error);
-});
                                   items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a><br>" );
                                  }
                                  
