@@ -44,7 +44,7 @@ var section = "";
                           $.each( data, function( key, val ) {
                                  var name = val.aqua_name;
                                  var menu = val.aqua_menu;
-                                 var id = val.aqua_id;
+                                 var id = val.aqua_key;
                                  if (id === geturl){                               
                                      db.collection("users").add({
     date: datenow,
