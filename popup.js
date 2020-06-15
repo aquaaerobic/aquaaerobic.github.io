@@ -22,10 +22,6 @@ window.onload = function() {
    callwhenback();
 };
 
-if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
-  alert('hello world');
-}
-
 function  callwhenback() {
 jQuery.get('notification.txt', function(data) {
          //alert(data.length);
