@@ -18,7 +18,6 @@ const getUA = () => {
     Object.keys(ua).map(v => navigator.userAgent.match(ua[v]) && (device = v));
     return device;
 }
-alert(getUA()); 
 jQuery.get('notification.txt', function(data) {
          //alert(data.length);
           // initialize title and body variables
