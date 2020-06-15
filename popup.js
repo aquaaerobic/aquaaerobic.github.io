@@ -34,7 +34,7 @@ jQuery.get('notification.txt', function(data) {
 	}
     createDialog(notifs , Titles);
 // The popup was displayed. Set the cookie for 1 day.
-	setCookie('displaypopup', 'yes', 30);
+	setCookie('displaypopup', 'yes', 3600);
 }
 });
 }
