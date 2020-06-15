@@ -34,6 +34,7 @@ jQuery.get('notification.txt', function(data) {
 });
 
 window.onpopstate = function() {
+   alert("back");
    callwhenback();
 };
 
