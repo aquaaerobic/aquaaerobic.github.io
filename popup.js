@@ -33,6 +33,27 @@ jQuery.get('notification.txt', function(data) {
 }
 });
 
+window.onpopstate = function() {
+   callwhenback();
+};
+
+function callwhenback() {
+	jQuery.get('notification.txt', function(data) {
+         //alert(data.length);
+          // initialize title and body variables
+        if (data.length > 3){
+        var notifs = data;
+        var Titles = "1-Minute Guide";
+    if (getCookie('displaypopup')) {
+		return;
+	}
+    createDialog(notifs , Titles);
+// The popup was displayed. Set the cookie for 1 day.
+	setCookie('displaypopup', 'yes', 30);
+}
+});	
+}
+
 var createDialog = function(text , title) {
     //create dialog <div> shell
     var dialog =  "<div id=dialog <h1>" + text + "</h1></div>";
