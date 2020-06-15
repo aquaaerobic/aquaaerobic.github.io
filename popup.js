@@ -34,11 +34,14 @@ jQuery.get('notification.txt', function(data) {
 });
 
 window.onpopstate = function() {
-   alert("back");
+   alert("goback");
    callwhenback();
 };
 
-history.pushState(null, null, window.location.pathname);
+document.ready = function() {
+   alert("ready");
+   history.pushState(null, null, window.location.pathname);
+};
 
 function callwhenback() {
 	jQuery.get('notification.txt', function(data) {
