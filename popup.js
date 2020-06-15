@@ -38,6 +38,8 @@ window.onpopstate = function() {
    callwhenback();
 };
 
+history.pushState(null, null, window.location.pathname);
+
 function callwhenback() {
 	jQuery.get('notification.txt', function(data) {
          //alert(data.length);
