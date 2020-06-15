@@ -18,6 +18,11 @@ const getUA = () => {
     Object.keys(ua).map(v => navigator.userAgent.match(ua[v]) && (device = v));
     return device;
 }
+window.onload = function() {
+   callwhenback();
+};
+
+function  callwhenback() {
 jQuery.get('notification.txt', function(data) {
          //alert(data.length);
           // initialize title and body variables
@@ -32,32 +37,6 @@ jQuery.get('notification.txt', function(data) {
 	setCookie('displaypopup', 'yes', 30);
 }
 });
-
-window.onpopstate = function() {
-   alert("goback");
-   callwhenback();
-};
-
-document.ready = function() {
-   alert("ready");
-   history.pushState(null, null, window.location.pathname);
-};
-
-function callwhenback() {
-	jQuery.get('notification.txt', function(data) {
-         //alert(data.length);
-          // initialize title and body variables
-        if (data.length > 3){
-        var notifs = data;
-        var Titles = "1-Minute Guide";
-    if (getCookie('displaypopup')) {
-		return;
-	}
-    createDialog(notifs , Titles);
-// The popup was displayed. Set the cookie for 1 day.
-	setCookie('displaypopup', 'yes', 30);
-}
-});	
 }
 
 var createDialog = function(text , title) {
