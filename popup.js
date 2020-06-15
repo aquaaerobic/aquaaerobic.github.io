@@ -24,10 +24,12 @@ jQuery.get('notification.txt', function(data) {
         if (data.length > 3){
         var notifs = data;
         var Titles = "1-Minute Guide";
-       // if (checkCookie())
-       // {
-           createDialog(notifs , Titles);
-       // }
+    if (getCookie('displaypopup')) {
+		return;
+	}
+    createDialog(notifs , Titles);
+// The popup was displayed. Set the cookie for 1 day.
+	setCookie('displaypopup', 'yes', 30);
 }
 });
 
@@ -70,11 +72,9 @@ function getCookie(cname) {
   }
   return "";
 }
-function setCookie(cname, cvalue, exdays) {
-  var d = new Date();
-  d.setTime(d.getTime()+(hours*60*60*1000));
-  var expires = "expires="+ d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+function setCookie(name, value, maxAgeSeconds) {
+    var maxAgeSegment = "; max-age=" + maxAgeSeconds;
+    document.cookie = encodeURI(name) + "=" + encodeURI(value) + maxAgeSegment;
 }
 function delete_cookie(name) {
   document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
