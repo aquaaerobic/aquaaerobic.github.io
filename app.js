@@ -34,7 +34,8 @@ var section = "";
                                  var name = val.aqua_name;
                                  var menu = val.aqua_menu;
                                  if (name === menu){   
-                                          items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
+                                   items.push( "<b>" + val.aqua_menu  + "</b><br>" );
+                                   // items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
                                  }else{
                                   var value = val.aqua_name;
                                   var space = "Online Webinars";
