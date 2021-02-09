@@ -36,7 +36,7 @@ var section = "";
                                  if (name === menu){   
                                           items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
                                  }else{
-                                  var value = val.aqua_name);
+                                  var value = val.aqua_name.val();
                                   if (value.trim() !== value) {
                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" +  val.aqua_name  + "<br>" );
                                    }else{
