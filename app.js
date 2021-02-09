@@ -42,7 +42,7 @@ var section = "";
                                    }else{
                                       items.push( "<b>" + val.aqua_menu  + "</b><br>" );
                                    }
-                                   items.push( "<b>" + val.aqua_menu  + "</b><br>" );
+                                 //  items.push( "<b>" + val.aqua_menu  + "</b><br>" );
                                    // items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
                                  }else{
                                   var value = val.aqua_name;
