@@ -50,8 +50,18 @@ var section = "";
                                   if (value.startsWith(space)) {
                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" +  val.aqua_name  + "<br>" );
                                    }else{
-                                     items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a><br>" );
-                                   }
+                                     var space1 = "Aqua TechTalk Webinar Series";
+                                    var space2 = "Learn and Earn Rep Trainings";
+                                     if (value.startsWith(space1)) {
+                                      items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name.trim()  + "</a><br>" );
+                                     }else if (value.startsWith(space2)) {
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name.trim()  + "</a><br>" );
+                    
+                                     }else{
+                                                 items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a><br>" );
+
+                                     }
+                                     }
                                   
                                  }
                                  
