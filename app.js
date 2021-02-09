@@ -33,10 +33,16 @@ var section = "";
                           $.each( data, function( key, val ) {
                                  var name = val.aqua_name;
                                  var menu = val.aqua_menu;
-                                 if (name === menu){                               
+                                 if (name === menu){   
                                           items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
                                  }else{
-                                  items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a><br>" );
+                                  var value = val.aqua_name);
+                                  if (value.trim() !== value) {
+                                      items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" +  val.aqua_name  + "<br>" );
+                                   }else{
+                                     items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a><br>" );
+                                   }
+                                  
                                  }
                                  
                           });
