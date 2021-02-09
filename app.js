@@ -52,7 +52,7 @@ var section = "";
                                    }else{
                                     var value2 = val.aqua_name;
                                      var space1 = "Aqua TechTalk Webinar Series";
-                                    var space2 = " Learn and Earn Rep Trainings";
+                                    var space2 = "Learn and Earn Rep Trainings";
                                      if (value2.trim().startsWith(space1)) {
                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name.trim()  + "</a><br>" );
                                      }else if (value2.trim().startsWith(space2)) {
