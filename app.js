@@ -51,11 +51,29 @@ var section = "";
                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" +  val.aqua_name  + "<br>" );
                                    }else{
                                     var value2 = val.aqua_name;
-                                     var space1 = "Aqua TechTalk Webinar Series";
-                                    var space2 = "Learn and Earn Rep Trainings";
+                                    var space1 = "Aqua TechTalk Webinar Series";
+                                    var space2 = "Learn and Earn Rep Training";
+                                    var space3 = "AquaBucks";
+                                    var space4 = "Invitations";
+                                    var space5 = "R&T Center Brochure";
+                                    var space6 = "Rep Fees";
+                                    var space7 = "Videos and Resources";
+                                    var space8 = "Related Resources";
                                      if (value2.trim().startsWith(space1)) {
                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name.trim()  + "</a><br>" );
                                      }else if (value2.trim().startsWith(space2)) {
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name.trim()  + "</a><br>" );
+                                 }else if (value2.trim().startsWith(space3)) {
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name.trim()  + "</a><br>" );
+                                 }else if (value2.trim().startsWith(space4)) {
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name.trim()  + "</a><br>" );
+                                 }else if (value2.trim().startsWith(space5)) {
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name.trim()  + "</a><br>" );
+                                 }else if (value2.trim().startsWith(space6)) {
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name.trim()  + "</a><br>" );
+                                 }else if (value2.trim().startsWith(space7)) {
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name.trim()  + "</a><br>" );
+                                 }else if (value2.trim().startsWith(space8)) {
                                        items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name.trim()  + "</a><br>" );
                     
                                      }else{
