@@ -37,7 +37,7 @@ var section = "";
                                           items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
                                  }else{
                                   var value = val.aqua_name;
-                                  var space = " ";
+                                  var space = "Online Webinars";
                                   if (value.startsWith(space)) {
                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" +  val.aqua_name  + "<br>" );
                                    }else{
