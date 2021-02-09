@@ -33,7 +33,15 @@ var section = "";
                           $.each( data, function( key, val ) {
                                  var name = val.aqua_name;
                                  var menu = val.aqua_menu;
-                                 if (name === menu){   
+                                 if (name === menu){  
+                                  var m1 = val.aqua_menu;
+                                  var mitem1 = "CALENDAR OF EVENTS";
+                                  var mitem2 = "CORPORATE NOTIFICATIONS";
+                                     if (m1.startsWith(mitem1) || m1.startsWith(mitem2)) {
+                                      items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
+                                   }else{
+                                      items.push( "<b>" + val.aqua_menu  + "</b><br>" );
+                                   }
                                    items.push( "<b>" + val.aqua_menu  + "</b><br>" );
                                    // items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
                                  }else{
