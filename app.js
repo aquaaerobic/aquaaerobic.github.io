@@ -38,7 +38,7 @@ var section = "";
                                  }else{
                                   var value = val.aqua_name;
                                   var space = " ";
-                                  if (haystack.startsWith(space)) {
+                                  if (value.startsWith(space)) {
                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" +  val.aqua_name  + "<br>" );
                                    }else{
                                      items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a><br>" );
