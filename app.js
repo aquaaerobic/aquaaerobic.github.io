@@ -36,8 +36,9 @@ var section = "";
                                  if (name === menu){   
                                           items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
                                  }else{
-                                  var value = val.aqua_name.val();
-                                  if (value.trim() !== value) {
+                                  var value = val.aqua_name;
+                                  var space = " ";
+                                  if (haystack.startsWith(space)) {
                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" +  val.aqua_name  + "<br>" );
                                    }else{
                                      items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a><br>" );
