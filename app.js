@@ -38,7 +38,13 @@ var section = "";
                                   var mitem1 = "CALENDAR OF EVENTS";
                                   var mitem2 = "CORPORATE NOTIFICATIONS";
                                      if (m1.startsWith(mitem1) || m1.startsWith(mitem2)) {
-                                      items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
+                                      if m1.startsWith(mitem1) {
+                                          items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
+                                      }
+                                      if m1.startsWith(mitem2) {
+                                          items.push( "<b><a href='https://aquaaerobic.github.io/notifications.html'>" + val.aqua_menu  + "</a></b><br>" );
+                                      }
+                                   
                                    }else{
                                       items.push( "<b>" + val.aqua_menu  + "</b><br>" );
                                    }
