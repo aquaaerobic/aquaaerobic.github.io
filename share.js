@@ -64,7 +64,7 @@ var section = "";
                });
  var website = "https://www.ckonkol.com/aquareference/myaqua.php?id=" + geturl
  document.getElementById("MyList").innerHTML = '';
- document.getElementById("MyList").innerHTML = '<iframe frameborder="0" src=' + website + ' width="100%" height="1200"></iframe>';   
+ document.getElementById("MyList").innerHTML = '<iframe frameborder="0" src=' + website + ' width="100%" height="12000"></iframe>';   
 }
 
 function closeWindow() {
