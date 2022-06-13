@@ -19,6 +19,6 @@ function populateshoppinglistonload()
  var geturl = get("id");
  var website = geturl
  document.getElementById("MyList").innerHTML = '';
- document.getElementById("MyList").innerHTML = '<iframe frameborder="0" src=' + website + ' width="100%" height="1200"></iframe>';   
+ document.getElementById("MyList").innerHTML = '<iframe frameborder="0" src=' + website + ' width="100%" height="1200"  scrolling="yes"></iframe>';   
 }
  
