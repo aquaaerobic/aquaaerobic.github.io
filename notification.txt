@@ -1,9 +1,6 @@
-Notifications 
-<br>
-- New Food & Beverage Application Profile! Go To: Biological Processes>Related Resources>Industrial Profiles  
-<br>
-- Looking for a Rep Video?
-<br>
-* tap < Back button above
-<br>
-* tap Rep Podcasts under GENERAL RESOURCES
+<b>Notifications>/b>
+<ul>
+  <li>New Employee Directory Update! Go To: General>Related Resources>Employee Directory</li>
+  <li>New Food & Beverage Application Profile! Go To: Biological Processes>Related Resources>Industrial Profiles</li>
+  <li>Looking for a Rep Video?Go to Rep Podcasts under GENERAL RESOURCES > Rep Podcasts</li>
+</ul>  
