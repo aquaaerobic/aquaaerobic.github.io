@@ -1,5 +1,5 @@
 <b>Notifications</b>
-<ul>
+<ul style="display: inline;">
   <li>New Employee Directory Update!</li>
       <ul><li>GENERAL RESOURCES > Employee Directory</li></ul>  
   <li>New Food & Beverage Application Profile!</li>
