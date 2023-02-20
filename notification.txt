@@ -1,9 +1,7 @@
 <b>Notifications</b>
 <ul style="display: inline;">
-  <li>New Employee Directory Update!</li>
-      <ul><li>GENERAL RESOURCES > Employee Directory</li></ul>  
-  <li>New Food & Beverage Application Profile!</li>
-      <ul><li>BIOLOGICAL PROCESSES > Product Related Resources > Industrial Profiles</li></ul>  
+  <li>NEW - Seminar Invitations!</li>
+      <ul><li>MARKETING > SEMINAR PROGRAMS > INVITATIONS</li></ul>  
   <li>Looking for a Rep Video?</li>
       <ul><li>GENERAL RESOURCES > Rep Podcasts</li></ul>  
 </ul> 
