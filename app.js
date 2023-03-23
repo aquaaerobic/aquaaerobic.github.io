@@ -11,14 +11,11 @@
   firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore();
   
-$(document).ready(function() {
-  
-//$('html').append('<center><img src="home.jpg" width="400"></center>');
-  
-$('body').css('display', 'none')
-.delay(1000).fadeIn(500, function() {
-  $('.onLoad').fadeOut(500);
-});
+$(document).ready(function() { 
+//$('body').css('display', 'none')
+//.delay(1000).fadeIn(500, function() {
+//  $('.onLoad').fadeOut(500);
+//});
   
 var phonename = "Android";
 var d = new Date();
