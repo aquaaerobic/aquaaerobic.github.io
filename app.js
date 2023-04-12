@@ -93,6 +93,10 @@ var section = "";
                             "class": "my-new-list",
                             html: items.join( "" )
                           }).appendTo( "body" );
+                
+                .done(function() { console.log('getJSON request succeeded!'); })
+.fail(function(jqXHR, textStatus, errorThrown) { console.log('getJSON request failed! ' + textStatus); })
+.always(function() { console.log('getJSON request ended!'); });
                });
             });
                 
