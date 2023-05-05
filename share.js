@@ -41,7 +41,7 @@ var d = new Date();
 var datenow = d;
 var section = "";
 
-   $.getJSON('https://aquaguide.app/json.php', function(data) {
+   $.getJSON('https://aquaguide.app/app/json.php', function(data) {
                       var items = [];
                           $.each( data, function( key, val ) {
                                  var name = val.aqua_name;
@@ -62,7 +62,7 @@ var section = "";
                                  }
                           });
                });
- var website = "https://aquaguide.app/myaqua.php?id=" + geturl
+ var website = "https://aquaguide.app/app/myaqua.php?id=" + geturl
  document.getElementById("MyList").innerHTML = '';
  document.getElementById("MyList").innerHTML = '<iframe frameborder="0" src=' + website + ' width="100%" height="1200"></iframe>';  
 }
