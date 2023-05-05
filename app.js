@@ -25,7 +25,7 @@ var datenow = day + " " + time;
 var section = "";
             
           //  $("#driver").click(function(event){
-              $.getJSON('https://aquaguide.app/json.php', function(data) {
+              $.getJSON('https://aquaguide.app/app/json.php', function(data) {
                       var items = [];
                           $.each( data, function( key, val ) {
                                  var name = val.aqua_name;
