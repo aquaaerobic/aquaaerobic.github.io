@@ -63,7 +63,7 @@ var section = "";
                                     var space7 = "Videos and Resources";
                                     var space8 = "Related Resources";
                                      if (value2.trim().startsWith(space1)) {
-                                        items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 75%;'>" + val.aqua_name.trim()  + "</a><br>" );
+                                        items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 75%;'>" + val.aqua_name.trim()  + "</a><br>" );
                                      }else if (value2.trim().startsWith(space2)) {
                                        items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 75%;'>" + val.aqua_name.trim()  + "</a><br>" );
                                  }else if (value2.trim().startsWith(space3)) {
