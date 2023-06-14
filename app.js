@@ -82,7 +82,7 @@ var section = "";
                                      }else{
                                      
                                            // items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a><br>" );
-                                            items.push("<li style='list-style-position: inside;text-size-adjust: auto;'><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a></li>" );
+                                            items.push("<li style='list-style-position: inside;text-size-adjust: auto;font-size: 75%;'><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a></li>" );
                                      
                                      }
                                      }
