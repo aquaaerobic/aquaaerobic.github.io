@@ -63,26 +63,26 @@ var section = "";
                                     var space7 = "Videos and Resources";
                                     var space8 = "Related Resources";
                                      if (value2.trim().startsWith(space1)) {
-                                        items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 85%;'>" + val.aqua_name.trim()  + "</a><br>" );
+                                        items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 95%;'>" + val.aqua_name.trim()  + "</a><br>" );
                                      }else if (value2.trim().startsWith(space2)) {
-                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 85%;'>" + val.aqua_name.trim()  + "</a><br>" );
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 95%;'>" + val.aqua_name.trim()  + "</a><br>" );
                                  }else if (value2.trim().startsWith(space3)) {
-                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 85%;'>" + val.aqua_name.trim()  + "</a><br>" );
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 95%;'>" + val.aqua_name.trim()  + "</a><br>" );
                                  }else if (value2.trim().startsWith(space4)) {
-                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 85%;'>" + val.aqua_name.trim()  + "</a><br>" );
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 95%;'>" + val.aqua_name.trim()  + "</a><br>" );
                                  }else if (value2.trim().startsWith(space5)) {
-                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 85%;'>" + val.aqua_name.trim()  + "</a><br>" );
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 95%;'>" + val.aqua_name.trim()  + "</a><br>" );
                                  }else if (value2.trim().startsWith(space6)) {
-                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 85%;'>" + val.aqua_name.trim()  + "</a><br>" );
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 95%;'>" + val.aqua_name.trim()  + "</a><br>" );
                                  }else if (value2.trim().startsWith(space7)) {
-                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 85%;'>" + val.aqua_name.trim()  + "</a><br>" );
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 95%;'>" + val.aqua_name.trim()  + "</a><br>" );
                                  }else if (value2.trim().startsWith(space8)) {
-                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 85%;'>" + val.aqua_name.trim()  + "</a><br>" );
+                                       items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "' style='font-size: 95%;'>" + val.aqua_name.trim()  + "</a><br>" );
                     
                                      }else{
                                      
                                            // items.push("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a><br>" );
-                                            items.push("<li style='list-style-position: inside;text-size-adjust: auto;font-size: 85%;'><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a></li>" );
+                                            items.push("<li style='list-style-position: inside;text-size-adjust: auto;font-size: 95%;'><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_name  + "</a></li>" );
                                      
                                      }
                                      }
