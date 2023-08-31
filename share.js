@@ -64,7 +64,7 @@ var section = "";
                });
  var website = "https://aquaguide.app/app/myaqua.php?id=" + geturl
  document.getElementById("MyList").innerHTML = '';
- document.getElementById("MyList").innerHTML = '<iframe frameborder="0" src=' + website + ' width="100%" height="1200"></iframe>';  
+ document.getElementById("MyList").innerHTML = '<iframe frameborder="0" src=' + website + ' width="100%" height="5000"></iframe>';  
 }
 
 function closeWindow() {
