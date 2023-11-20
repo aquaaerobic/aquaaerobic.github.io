@@ -5,7 +5,8 @@
 <script type="text/javascript">
 setTimeout(function() {
     var geturl = get("url");
-    window.location.href = geturl; //window.location.hash.substr(1);
+    //window.location.href = geturl; //window.location.hash.substr(1);
+    $('meta[http-equiv="refresh"]').replaceWith('<meta http-equiv="refresh" CONTENT="3;URL=" + geturl() + ">'); 
 }, 0);
 
 function get(name){
@@ -21,6 +22,7 @@ function get(name){
 }
 
 </script>
+<META HTTP-EQUIV="refresh"">
 </HEAD>
 <body>
 <center>
