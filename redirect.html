@@ -5,9 +5,9 @@
 <script type="text/javascript">
 setTimeout(function() {
     var geturl = get("url");
-    window.location.replace = geturl; //window.location.hash.substr(1);
+    window.location.replace(geturl); //window.location.hash.substr(1);
     //$('meta[http-equiv="refresh"]').replaceWith('<meta http-equiv="refresh" CONTENT="3;URL=" + geturl() + ">'); 
-}, 0);
+}, 5);
 
 function get(name){
     var url = window.location.search;
