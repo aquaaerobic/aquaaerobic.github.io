@@ -1,7 +1,11 @@
 <b>Notifications</b>
 <ul style="display: inline;">
-  <li>NEW - Seminar Invitations!</li>
-      <ul><li>MARKETING > SEMINAR PROGRAMS > INVITATIONS</li></ul>  
+ <li>2024 Seminars!</li>
+      <ul><li>tap CALENDAR OF EVENTS</li></ul>  
+  <li>2024 Seminar Invitations!</li>
+      <ul><li>MARKETING > SEMINAR PROGRAMS > tap INVITATIONS</li></ul>  
   <li>Looking for a Rep Video?</li>
-      <ul><li>GENERAL RESOURCES > Rep Podcasts</li></ul>  
+      <ul><li>GENERAL RESOURCES > tap Rep Podcasts</li></ul>  
+ <li>Looking for more Events?</li>
+      <ul><li>tap CALENDAR OF EVENTS</li></ul> 
 </ul> 
