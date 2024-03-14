@@ -1,14 +1,12 @@
 <b>Notifications</b>
 <ul style="display: inline;">
  <li>2024 Seminars!</li>
-      <ul><li>tap CALENDAR OF EVENTS</li></ul>  
+      <ul><li>General Resources<br>> Black Belt 2024 Resources</li></ul>  
   <li>2024 Seminar Invitations!</li>
-      <ul><li>MARKETING > SEMINAR PROGRAMS</li>
-<li>tap INVITATIONS</li>
+      <ul><li>MARKETING<br>> SEMINAR PROGRAMS<br>> INVITATIONS</li>
 </ul>  
   <li>Looking for a Rep Video?</li>
-      <ul><li>GENERAL RESOURCES</li>
-<li>tap Rep Podcasts</li>
+      <ul><li>GENERAL RESOURCES<br>> Rep Podcasts</li>
 </ul>  
  <li>Looking for more Events?</li>
       <ul><li>tap CALENDAR OF EVENTS</li></ul> 
