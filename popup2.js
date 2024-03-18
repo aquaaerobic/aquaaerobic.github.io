@@ -46,10 +46,10 @@ var createDialog = function(text , title) {
     
     // update the <div>'s title
     $('#dialog').prop('title' , title);
-    
+    document.getElementById("modalClose").addEventListener("click", closeit);
     //create the dialog
     $('#dialog').dialog();
-    document.getElementById("modalClose").addEventListener("click", closeit);
+ 
 }
 
 function checkCookie() {
@@ -87,6 +87,7 @@ function delete_cookie(name) {
 function closeit(){
 	//window.close();
     //$('#dialog').dialog('close');
-    window.location.replace = "https://aquaguide.app";
+    //window.location.replace = "https://aquaguide.app";
+    location.replace("https://aquaguide.app")
 }
 
