@@ -83,3 +83,9 @@ function setCookie(name, value, maxAgeSeconds) {
 function delete_cookie(name) {
   document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
+function closeit(){
+	//window.close();
+    $('#dialog').dialog('close');
+    location.reload();
+}
+
