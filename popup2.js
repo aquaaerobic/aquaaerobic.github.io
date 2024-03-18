@@ -102,6 +102,6 @@ function delete_cookie(name) {
 }
 function closeit(){
   $('#dialog').dialog('close');
-    location.reload();
+   history.back();
 }
 
