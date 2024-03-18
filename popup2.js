@@ -88,7 +88,6 @@ function delete_cookie(name) {
 function closeit(){
 	//window.close();
     //$('#dialog').dialog('close');
-    location.href = "https://aquaguide.app/";
-    location.reload();
+    window.location.replace = "https://aquaguide.app/";
 }
 
