@@ -88,6 +88,6 @@ function delete_cookie(name) {
 function closeit(){
 	//window.close();
     //$('#dialog').dialog('close');
-    window.location.replace = "https://aquaguide.app/";
+    location.replace = "https://aquaguide.app";
 }
 
