@@ -11,3 +11,7 @@
  <li>Looking for more Events?</li>
       <ul><li>tap CALENDAR OF EVENTS</li></ul> 
 </ul> 
+<hr>
+<button id="modalClose" type="button" style="color: white;background-color: rgb(213, 83, 85);border-color: black;font-size: 10pt;font-weight: bold;">Close</button>
+<br><br>
+<div id="footer" style="color: #ccccff;font-size: smaller;">last updated 03/18/2024</div>
