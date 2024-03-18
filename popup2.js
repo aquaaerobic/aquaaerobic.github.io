@@ -88,7 +88,7 @@ function closeit(){
 	//window.close();
     //$('#dialog').dialog('close');
     //window.location.replace = "https://aquaguide.app";
-    top.reloadChildFrames()
+    window.location.reloadChildFrames()
    // location.replace("https://aquaguide.app")
 }
 
