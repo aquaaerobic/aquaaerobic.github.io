@@ -49,6 +49,8 @@ var createDialog = function(text , title) {
     
     //create the dialog
     $('#dialog').dialog();
+
+   document.getElementById("modalClose").addEventListener("click", closeit);
 }
 
 function checkCookie() {
