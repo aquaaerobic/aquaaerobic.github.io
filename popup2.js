@@ -49,8 +49,7 @@ var createDialog = function(text , title) {
     
     //create the dialog
     $('#dialog').dialog();
-    $(this).parent().children().children('.ui-dialog-titlebar').hide();
-   document.getElementById("modalClose").addEventListener("click", closeit);
+    document.getElementById("modalClose").addEventListener("click", closeit);
 }
 
 function checkCookie() {
