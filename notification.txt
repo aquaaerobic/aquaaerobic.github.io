@@ -1,6 +1,6 @@
 <b>Notifications</b>
 <ul style="display: inline;">
- <li>2024 Seminars!</li>
+ <li>BLACK BELT 2024!</li>
       <ul><li>General Resources<br>> Black Belt 2024 Resources</li></ul>  
   <li>2024 Seminar Invitations!</li>
       <ul><li>MARKETING<br>> SEMINAR PROGRAMS<br>> INVITATIONS</li>
