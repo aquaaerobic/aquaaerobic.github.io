@@ -68,7 +68,6 @@ var createDialog = function(text , title) {
 	  document.getElementById("modalClose").addEventListener("click", closeit);
 }
  
-
 function checkCookie() {
     // Get cookie using our custom function
     var notif = getCookie("notification");
