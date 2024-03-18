@@ -49,7 +49,7 @@ var createDialog = function(text , title) {
     
     //create the dialog
     $('#dialog').dialog();
-    $(this).parent().children().children('.ui-dialog-titlebar-close').hide();
+    $(this).parent().children().children('.ui-dialog-titlebar').hide();
    document.getElementById("modalClose").addEventListener("click", closeit);
 }
 
@@ -87,7 +87,7 @@ function delete_cookie(name) {
 }
 function closeit(){
 	//window.close();
-    $('#dialog').dialog('close');
+    //$('#dialog').dialog('close');
     window.location.href = "https://aquaguide.app/";
 }
 
