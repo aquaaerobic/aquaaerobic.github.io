@@ -42,16 +42,33 @@ jQuery.get('notification.txt', function(data) {
 
 var createDialog = function(text , title) {
     //create dialog <div> shell
-    var dialog =  "<div id=dialog <h1>" + text + "</h1></div>";
+    //create dialog <div> shell
+    var dialog =  '<div id="dialog" title="1-Minute App Notifications!" style="font-size: 11px;">' + text + '</div>';
     
     // create the dialog <div>
     $('body').append(dialog);
     
     // update the <div>'s title
-    $('#dialog').prop('title' , title);
-    
-    //create the dialog
-    $('#dialog').dialog();
+     //$('#dialog').prop('title' , title);
+     $('#dialog').dialog({
+	      modal:true,
+    open: function(event, ui) {
+	  var win = $(window);  
+	        $(".ui-widget-overlay").css({
+            opacity: .7,
+            filter: "Alpha(Opacity=100)",
+            backgroundColor: "#AAAAAA"
+        });
+       // $('.ui-dialog-titlebar-close')
+       //     .removeClass("ui-dialog-titlebar-close")
+       //      .html('<a href="javascript:closeit();" style="color: yellow;font-size: small;">Click here to close &amp; view our website!</a>');
+	$(this).closest('.ui-dialog').css({'width':'370px'});
+        $(this).closest('.ui-dialog').css({'position':'absolute',left: (win.width() - $(this).parent().outerWidth()) / 2,top: 100});
+	$(".ui-dialog-title" ).css("float", "none" );
+	 $(this).parent().children().children('.ui-dialog-titlebar-close').hide();
+    }
+}).prev(".ui-dialog-titlebar").css({'background':'#D55355','color':'white','text-align':'center'});
+	  document.getElementById("modalClose").addEventListener("click", closeit);
 }
 
 function checkCookie() {
@@ -86,5 +103,11 @@ function setCookie(name, value, maxAgeSeconds) {
 function delete_cookie(name) {
   document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
+
+function closeit(){
+  $('#dialog').dialog('close');
+    location.href = "https://aquaguide.app/body.html";
+}
+
 
 
