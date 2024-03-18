@@ -106,7 +106,7 @@ function delete_cookie(name) {
 
 function closeit(){
   $('#dialog').dialog('close');
-    location.href = "https://aquaaerobic.github.io/body.html";
+    location.reload();
 }
 
 
