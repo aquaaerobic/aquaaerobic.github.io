@@ -49,7 +49,7 @@ var createDialog = function(text , title) {
     
     //create the dialog
     $('#dialog').dialog();
-
+    $(this).parent().children().children('.ui-dialog-titlebar-close').hide();
    document.getElementById("modalClose").addEventListener("click", closeit);
 }
 
