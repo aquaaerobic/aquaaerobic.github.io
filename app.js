@@ -39,7 +39,7 @@ var section = "";
                                           items.push( "<b><a href='https://aquaaerobic.github.io/share.html?id=" + val.aqua_key + "'>" + val.aqua_menu  + "</a></b><br>" );
                                       }
                                       if (m1.startsWith(mitem2)) {
-                                          items.push( "<b><a href='https://aquaaerobic.github.io/notifications.html'>" + val.aqua_menu  + "</a></b><br>" );
+                                          items.push( "<b><a href='javascript:callback();'>" + val.aqua_menu  + "</a></b><br>" );
                                       }
                                    
                                    }else{
