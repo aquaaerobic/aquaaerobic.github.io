@@ -39,6 +39,22 @@ jQuery.get('notification.txt', function(data) {
 });
 }
 
+function  callback() {
+    jQuery.get('notification.txt', function(data) {
+        //alert(data.length);
+        // initialize title and body variables
+        if (data.length > 3){
+            var notifs = data;
+            var Titles = "1-Minute Guide";
+ 
+            createDialog(notifs , Titles);
+             setTimeout(function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+       }, 15);
+        }
+    });
+}
+
 
 var createDialog = function(text , title) {
     //create dialog <div> shell
