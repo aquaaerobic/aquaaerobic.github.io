@@ -1,7 +1,7 @@
 <b>Notifications</b>
 <ul style="display: inline;">
  <li>BLACK BELT 2024!</li>
-      <ul><li>General Resources<br>> Black Belt 2024 Resources</li></ul>  
+      <ul><a href="https://aquaaerobic.github.io/share.html?id=507b4893e32708851b8abafd94e93706"><li>General Resources<br>> Black Belt 2024 Resources</li></a></ul>  
   <li>2024 Seminar Invitations!</li>
       <ul><li>MARKETING<br>> SEMINAR PROGRAMS<br>> INVITATIONS</li>
 </ul>  
@@ -14,4 +14,4 @@
 <hr>
 <button id="modalClose" type="button" style="color: white;background-color: rgb(213, 83, 85);border-color: black;font-size: 10pt;font-weight: bold;">Close</button>
 <br><br>
-<div id="footer" style="color: #ccccff;font-size: smaller;">last updated 03/18/2024</div>
+<div id="footer" style="color: #ccccff;font-size: smaller;">last updated 03/20/2024</div>
