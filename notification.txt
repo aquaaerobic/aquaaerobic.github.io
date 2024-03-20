@@ -1,15 +1,15 @@
 <b>Notifications</b>
 <ul style="display: inline;">
  <li>BLACK BELT 2024!</li>
-      <ul><a href="https://aquaaerobic.github.io/share.html?id=507b4893e32708851b8abafd94e93706"><li>General Resources<br>> Black Belt 2024 Resources</li></a></ul>  
+      <ul><a href="https://aquaaerobic.github.io/share.html?id=507b4893e32708851b8abafd94e93706"><li style="color: blue;">General Resources<br>> Black Belt 2024 Resources</li></a></ul>  
   <li>2024 Seminar Invitations!</li>
-      <ul><li>MARKETING<br>> SEMINAR PROGRAMS<br>> INVITATIONS</li>
+      <ul><a href="https://aquaaerobic.github.io/share.html?id=7f9c4682a76ab7b2b68f9e51021935e0"><li style="color: blue;">MARKETING<br>> SEMINAR PROGRAMS<br>> INVITATIONS</li></a>
 </ul>  
   <li>Looking for a Rep Video?</li>
-      <ul><li>GENERAL RESOURCES<br>> Rep Podcasts</li>
+      <ul><a href="https://aquaaerobic.github.io/share.html?id=59d1de5b3789aac618498ce8cd826bfe"><li style="color: blue;">GENERAL RESOURCES<br>> Rep Podcasts</li></a>
 </ul>  
  <li>Looking for more Events?</li>
-      <ul><li>tap CALENDAR OF EVENTS</li></ul> 
+      <ul><a href="https://aquaaerobic.github.io/share.html?id=17d541c4d93030a5b02d78211ca2866a"<li style="color: blue;">CALENDAR OF EVENTS</li></a></ul> 
 </ul> 
 <hr>
 <button id="modalClose" type="button" style="color: white;background-color: rgb(213, 83, 85);border-color: black;font-size: 10pt;font-weight: bold;">Close</button>
