@@ -5,10 +5,10 @@
   <li>2024 Seminar Invitations!</li>
       <ul><a href="https://aquaaerobic.github.io/share.html?id=7f9c4682a76ab7b2b68f9e51021935e0"><li style="color: blue;">MARKETING<br>> SEMINAR PROGRAMS<br>> INVITATIONS</li></a>
 </ul>  
-  <li>Looking for a Rep Video?</li>
+  <li>LOOKING FOR A REP VIDEO?</li>
       <ul><a href="https://aquaaerobic.github.io/share.html?id=59d1de5b3789aac618498ce8cd826bfe"><li style="color: blue;">GENERAL RESOURCES<br>> Rep Podcasts</li></a>
 </ul>  
- <li>Looking for more Events?</li>
+ <li>LOOKING FOR MORE EVENTS?</li>
       <ul><a href="https://aquaaerobic.github.io/share.html?id=17d541c4d93030a5b02d78211ca2866a"<li style="color: blue;">CALENDAR OF EVENTS</li></a></ul> 
 </ul> 
 <hr>
