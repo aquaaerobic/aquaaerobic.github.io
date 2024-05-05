@@ -1,10 +1,12 @@
 <b>1-Minute Reference Guide Notifications</b><br>
 <ul style="display: inline;">
+<br><li>2024 Invitations!</li>
+  <ul><a href="https://aquaaerobic.github.io/share.html?id=8fc116efbad087f0d8a02eecc0d9757e"><li style="color: blue;">Webinars: MARKETING<br>> Online Webinars <br>> Aqua TechTalk Webinar Series</li></a>
+</ul>  
+      <ul><a href="https://aquaaerobic.github.io/share.html?id=7f9c4682a76ab7b2b68f9e51021935e0"><li style="color: blue;">Seminars: MARKETING<br>> Seminar Programs<br>> Invitations</li></a>
+</ul>  
  <li>BLACK BELT 2024!</li>
       <ul><a href="https://aquaaerobic.github.io/share.html?id=507b4893e32708851b8abafd94e93706"><li style="color: blue;">General Resources<br>> Black Belt 2024 Resources</li></a></ul>  
-  <br><li>2024 Seminar Invitations!</li>
-      <ul><a href="https://aquaaerobic.github.io/share.html?id=7f9c4682a76ab7b2b68f9e51021935e0"><li style="color: blue;">MARKETING<br>> SEMINAR PROGRAMS<br>> INVITATIONS</li></a>
-</ul>  
   <br><li>LOOKING FOR A REP VIDEO?</li>
       <ul><a href="https://aquaaerobic.github.io/share.html?id=59d1de5b3789aac618498ce8cd826bfe"><li style="color: blue;">GENERAL RESOURCES<br>> Rep Podcasts</li></a>
 </ul>  
