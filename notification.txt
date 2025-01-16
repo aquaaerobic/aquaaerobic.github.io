@@ -1,7 +1,7 @@
 <b>1-Minute Reference Guide Notifications</b><br>
 <ul style="display: inline;">
 <br>
-<li style="color: blue;"><a href="https://aquaaerobic.github.io/share.html?id=4728fe872c4ad2be8c141e8cf90c5b63">COMPANY PROFILE</a></li>
+<li><a href="https://aquaaerobic.github.io/share.html?id=4728fe872c4ad2be8c141e8cf90c5b63"><li style="color: blue;">COMPANY PROFILE</li></a></li>
 <li>2025 INVITATIONS!</li>
   <ul><a href="https://aquaaerobic.github.io/share.html?id=8fc116efbad087f0d8a02eecc0d9757e"><li style="color: blue;">Webinars: MARKETING<br>> Online Webinars <br>> Aqua TechTalk Webinar Series</li></a>
 </ul>  
@@ -19,4 +19,4 @@
 <hr>
 <button id="modalClose" type="button" style="color: white;background-color: rgb(213, 83, 85);border-color: black;font-size: 10pt;font-weight: bold;">Close</button>
 <br><br>
-<div id="footer" style="color: #ccccff;font-size: smaller;">last updated 05/03/2024</div>
+<div id="footer" style="color: #ccccff;font-size: smaller;">last updated 01/16/2025</div>
