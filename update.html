@@ -37,6 +37,19 @@
 function myFunction() {
   alert("AquaGuide: 1-Minute App Update\n\nAvailable:\nMonday, April 7th through Thursday, May 1st 2025!\n\nCome Back!","Update");
 }
+	<script>
+  function showAlert(title, message) {
+    // Create a custom alert box
+    const alertBox = document.createElement('div');
+    alertBox.className = 'custom-alert';
+    alertBox.innerHTML = `
+      <h2>${title}</h2>
+      <p>${message}</p>
+      <button onclick="document.body.removeChild(this.parentElement)">OK</button>
+    `;
+    document.body.appendChild(alertBox);
+  }
+</script>
 </script>
     <header>
         <div class="container">
@@ -64,7 +77,7 @@ function myFunction() {
                         </ol>
                         <br>
 <center>
-	                            <button onclick="myFunction()" class="btn btn-outline btn-xl page-scroll" style="color: black;">Get Update!</button>
+	                            <button onclick="showAlert('AquaGuide: 1-Minute App Update\n\nAvailable:\nMonday, April 7th through Thursday, May 1st 2025!\n\nCome Back!', 'Update')" class="btn btn-outline btn-xl page-scroll" style="color: black;">Get Update!</button>
                                    <!-- <a href="itms-services://?action=download-manifest&amp;url=https://aquaaerobic.github.io/aquaguide.plist" class="btn btn-outline btn-xl page-scroll">Get Update!</a>-->
                                     </center>
                         <br>
