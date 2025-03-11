@@ -1,4 +1,5 @@
 <html lang="en"><head>
+	 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,39 +31,28 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 <style>
-    .container{
+    .container {
         text-align: center;
     }
-    h1{
+
+    h1 {
         color: green;
     }
-    .custom-alert {
-      position: fixed;
-      top: 200px;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 2px;
-      border-radius: 2px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-  </style>
+</style>
 </head>
 
 <body id="page-top">
 <script>
-  function showAlert(title, message) {
-    // Create a custom alert box
-    const alertBox = document.createElement('div');
-    alertBox.className = 'custom-alert';
-    alertBox.innerHTML = `
-      <h2>${title}</h2>
-      <p>${message}</p>
-      <button onclick="document.body.removeChild(this.parentElement)">OK</button>
-    `;
-    document.body.appendChild(alertBox);
-  }
+   <script>
+        function showCustomAlert() {
+            // Create a custom alert box with SweetAlert
+            Swal.fire({
+                title: '1-Minute App Update',
+                text: 'AquaGuide: 1-Minute App Update\n\nAvailable:\nMonday, April 7th through Thursday, May 1st 2025!\n\nCome Back!',
+                confirmButtonText: 'OK'
+            });
+        }
+    </script>
 </script>
     <header>
         <div class="container">
@@ -90,7 +80,7 @@
                         </ol>
                         <br>
 <center>
-	                            <button onclick="showAlert('AquaGuide: 1-Minute App Update\n\nAvailable:\nMonday, April 7th through Thursday, May 1st 2025!\n\nCome Back!', 'Update')" class="btn btn-outline btn-xl page-scroll" style="color: black;">Get Update!</button>
+	                            <button onclick="showCustomAlert()" class="btn btn-outline btn-xl page-scroll" style="color: black;">Get Update!</button>
                                    <!-- <a href="itms-services://?action=download-manifest&amp;url=https://aquaaerobic.github.io/aquaguide.plist" class="btn btn-outline btn-xl page-scroll">Get Update!</a>-->
                                     </center>
                         <br>
