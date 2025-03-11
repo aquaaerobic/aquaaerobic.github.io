@@ -154,8 +154,8 @@
     const alertBox = document.createElement('div');
     alertBox.className = 'custom-alert';
     alertBox.innerHTML = `
-      <h2>${title}</h2>
-      <p>${message}</p>
+      <h2 style="font-size: 18px;">${title}</h2>
+      <p style="font-size: 12px;">${message}</p>
       <button onclick="document.body.removeChild(this.parentElement)">OK</button>
     `;
     document.body.appendChild(alertBox);
