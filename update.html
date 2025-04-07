@@ -162,7 +162,7 @@
     alertBox.className = 'custom-alert';
     alertBox.innerHTML = `
       <h2 style="font-size: 18px;">${title}</h2>
-      <p style="font-size: 12px;">${message}</p>
+      <p style="font-size: 12px;">1) The app WILL close while updating.<BR>2) Please wait about a minute for the update to complete!<BR>3) After a minute, open the Updated 'AquaGuide' app!<br>4) Click 'INSTALL' button below to get update!${message}</p>
       <button onclick="document.body.removeChild(this.parentElement)" style="font-size: 12px;">OK</button>
     `;
     document.body.appendChild(alertBox);
