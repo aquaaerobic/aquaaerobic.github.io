@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Firebase Query Example</title>
+  <title>1-Minute App Update Log</title>
   <script type="module">
     // Import the Firebase SDK modules
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getFirestore, collection, query, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getFirestore, getCountFromServer,collection, query, where, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
     // Your Firebase config
 const firebaseConfig = {
@@ -21,28 +22,46 @@ const firebaseConfig = {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-
+    const startDate = new Date("2025-04-07T06:00:00");
+    const TodaysDate = new Date();
+    console.log(startDate);
     // Query Firestore
     async function loadData() {
       const tipsRef = collection(db, "users");
-     const q = query(tipsRef, where("visited", "==",  "APP UPDATE AVAILABLE - TAP HERE!"),where("date", ">=",  "04/04/2025"),orderBy("date", "desc"), limit(1000));
+      const q = query(
+    tipsRef,
+    where("visited", "==", "APP UPDATE AVAILABLE - TAP HERE!"),
+    where("device", "==", "iPhone"),
+    where("date", ">=", startDate),
+    orderBy("date", "desc"),
+    limit(1000)
+  );
       const querySnapshot = await getDocs(q);
 
       const resultsDiv = document.getElementById("results");
-      resultsDiv.innerHTML = "<h2>Latest Tips:</h2>";
-
+      const snapshot = await getCountFromServer(q);
+      console.log("Published Tips Count:", snapshot.data().count);
+      resultsDiv.innerHTML = "<center>iPhone app update count from 4/7/2025 - " + TodaysDate.toLocaleDateString() + " is <b>" + snapshot.data().count + "</b></center><br>";
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        resultsDiv.innerHTML += `<p><strong>${data.title}</strong>: ${data.content}</p>`;
+  const date = data.date.toDate();
+  const formattedDate = date.toLocaleDateString();
+  const formTime = date.toLocaleTimeString();
+        resultsDiv.innerHTML += '<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Date: </strong>' + formattedDate + ' ' + formTime + '' + ', <strong>Device: </strong>' +  data.device + ', <strong>Visited Page: </strong> ' + data.visited + '</p>';
       });
+
     }
+
+    //</center>
+   
+ 
 
     // Load data on page load
     window.addEventListener("DOMContentLoaded", loadData);
   </script>
 </head>
 <body>
-  <h1>Welcome to Firebase Query Demo</h1>
-  <div id="results">Loading tips...</div>
+  <center><h1>1-Minute App Update Log</h1></center>
+  <div id="results">Loading log...</div>
 </body>
 </html>
