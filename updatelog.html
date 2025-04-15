@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Firebase Query Example</title>
+  <script type="module">
+    // Import the Firebase SDK modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, query, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    // Your Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyBu4FaHCylofeNVO5gHkyS4IYFcYZLOiA4",
+  authDomain: "aquaguide2018.firebaseapp.com",
+  projectId: "aquaguide2018",
+  storageBucket: "aquaguide2018.firebasestorage.app",
+  messagingSenderId: "333575317068",
+  appId: "1:333575317068:web:5ab37f19fd58d8c96ab6e9"
+};
+
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Query Firestore
+    async function loadData() {
+      const tipsRef = collection(db, "users");
+     const q = query(tipsRef, where("visited", "==",  "APP UPDATE AVAILABLE - TAP HERE!"),where("date", ">=",  "04/04/2025"),orderBy("date", "desc"), limit(1000));
+      const querySnapshot = await getDocs(q);
+
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = "<h2>Latest Tips:</h2>";
+
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        resultsDiv.innerHTML += `<p><strong>${data.title}</strong>: ${data.content}</p>`;
+      });
+    }
+
+    // Load data on page load
+    window.addEventListener("DOMContentLoaded", loadData);
+  </script>
+</head>
+<body>
+  <h1>Welcome to Firebase Query Demo</h1>
+  <div id="results">Loading tips...</div>
+</body>
+</html>
