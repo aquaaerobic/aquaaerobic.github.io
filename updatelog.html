@@ -47,7 +47,7 @@ const firebaseConfig = {
   const date = data.date.toDate();
   const formattedDate = date.toLocaleDateString();
   const formTime = date.toLocaleTimeString();
-        resultsDiv.innerHTML += '<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Date: </strong>' + formattedDate + ' ' + formTime + '' + ', <strong>Device: </strong>' +  data.device + ', <strong>Visited Page: </strong> ' + data.visited + '</p>';
+        resultsDiv.innerHTML += '<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Date: </strong>' + formattedDate + ' ' + formTime + '' + ', <strong>Device: </strong>' +  data.device + ', <strong>Visited Page: </strong> ' + data.visited + ', docid: ' + data.id + '</p>';
       });
 
     }
