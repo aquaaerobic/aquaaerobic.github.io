@@ -92,7 +92,7 @@ var section = "";
                           });
                          
                           $( "<ul/>", {
-                            "class": "my-new-list",
+                           "class": "my-new-list","style":"font-size: 15px;font-family: sans-serif;",
                             html: items.join( "" )
                           }).appendTo("body");
          
