@@ -51,7 +51,7 @@ var section = "";
     db.collection("users").add({
     date: myTimestamp,
     device: devicetype,
-    visited: name
+    visited: menu + '/' + name
 })
 .then(function(docRef) {
     console.log("Document written with ID: ", docRef.id);
