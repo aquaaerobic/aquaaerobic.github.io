@@ -99,4 +99,62 @@ const getUA = () => {
 }
 devicetype = getUA();    
 }
- 
+
+/* ============================================================
+   AquaGuide PDF Logging
+   ------------------------------------------------------------
+   Paste this at the bottom of share.js.
+   It detects clicks on any link ending in .pdf (or containing .pdf in a redirect)
+   and saves the "visited" log to your Firebase 'users' collection.
+   ============================================================ */
+document.addEventListener('click', function(e) {
+    // 1. Find the clicked anchor tag (<a>)
+    var target = e.target.closest("a");
+    
+    // 2. Safety check: ensure it is a link
+    if (!target || !target.href) return;
+
+    var fullUrl = target.href;
+    
+    // 3. Check if this is a PDF (matches standard links OR your redirect.html links)
+    // We check specifically for ".pdf" at the end of the string or before a query string
+    if (fullUrl.toLowerCase().indexOf(".pdf") === -1) {
+        return; // Not a PDF, ignore
+    }
+
+    // 4. Extract the clean filename
+    // If it's a redirect.html link, we want the actual file name, not "redirect.html"
+    var cleanName = fullUrl;
+    
+    // If using the redirect URL structure you shared:
+    if (fullUrl.includes("url=")) {
+        var params = new URLSearchParams(fullUrl.split('?')[1]);
+        if (params.get("url")) {
+            cleanName = params.get("url");
+        }
+    }
+
+    // Get just the file part (e.g., "Rental Aeration... .pdf")
+    var filename = cleanName.split('/').pop();
+    
+    // Decode special characters (remove %20, etc.)
+    try { 
+        filename = decodeURIComponent(filename); 
+    } catch(err) {
+        // If decoding fails, keep original
+    }
+
+    // 5. Send to Firebase
+    // We use the variables 'db' and 'devicetype' that are already defined in your share.js
+    if (typeof db !== 'undefined') {
+        console.log("Logging PDF Click:", filename);
+        
+        db.collection("users").add({
+            date: firebase.firestore.Timestamp.fromDate(new Date()),
+            device: devicetype || "Web/PWA", // Uses the device type calculated at the top of share.js
+            visited: filename + " (PDF)"      // Appends (PDF) so you can filter these easily later
+        }).catch(function(error) {
+            console.error("Error logging PDF click:", error);
+        });
+    }
+});
