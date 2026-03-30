@@ -14,42 +14,40 @@
     <style>
         body { font-family: 'Muli', sans-serif; }
         
-        /* Mobile-friendly card style */
         .update-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             border-radius: 15px;
             padding: 25px;
             margin-top: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             color: #333;
         }
 
-        /* High-Visibility Button */
+        /* High-Visibility Pulsing Button */
         .btn-update-now {
             background-color: #f9f406 !important;
             color: #000 !important;
             border: 2px solid #d4cf05 !important;
             font-weight: 800;
-            letter-spacing: 1px;
             padding: 18px 30px;
             font-size: 20px;
             border-radius: 50px;
             display: inline-block;
+            text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(249, 244, 6, 0.4);
             animation: pulse-animation 2s infinite;
         }
 
         @keyframes pulse-animation {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(249, 244, 6, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(249, 244, 6, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(249, 244, 6, 0); }
         }
 
         .btn-update-now:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(249, 244, 6, 0.6);
-            background-color: #fff !important;
+            background-color: #000 !important;
+            color: #f9f406 !important;
+            text-decoration: none;
         }
 
         .instruction-text {
@@ -58,16 +56,18 @@
             line-height: 1.6;
         }
 
-        .check-item { list-style: none; padding-left: 0; text-align: left; }
+        .help-box {
+            background-color: #f8f9fa;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .check-item { list-style: none; padding-left: 0; text-align: left; margin-top: 10px; }
         .check-item li::before { content: "✅ "; margin-right: 5px; }
 
-        footer { padding: 30px 0; background: #222; color: #777; }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .header-content { padding: 40px 10px !important; }
-            h1 { font-size: 45px !important; }
-        }
+        footer { padding: 40px 0; background: #222; color: #aaa; }
     </style>
 </head>
 
@@ -78,33 +78,35 @@
                 <div class="col-sm-12 col-md-7">
                     <div class="header-content">
                         <div class="header-content-inner">
-                            <h1 style="color:white; font-weight: 900;">AQUAGUIDE</h1>
-                            <p style="font-size: 1.2em; opacity: 0.9;">1-Minute Reference Guide</p>
-                            <div class="visible-xs visible-sm" style="margin-top: 20px;">
-                                <i class="fa fa-chevron-down" style="color:#f9f406; font-size: 2em;"></i>
-                            </div>
+                            <h1 style="color:white; font-weight: 900; margin-bottom: 10px;">AQUAGUIDE</h1>
+                            <p style="font-size: 1.3em; color: #f9f406;"><strong>iPhone App Update Required</strong></p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-5">
                     <div class="update-card">
-                        <h3 style="margin-top:0; font-weight:700;">Update Instructions</h3>
-                        <p class="instruction-text">
-                            1. Tap the button below.<br>
-                            2. Select <strong>'Install'</strong> when prompted.<br>
-                            3. The app will close to complete the update (10-15s).
-                        </p>
+                        <h3 style="margin-top:0; font-weight:700;">Quick Instructions</h3>
+                        <ol class="instruction-text" style="padding-left: 20px;">
+                            <li>Tap the <strong>'GET UPDATE!'</strong> button below.</li>
+                            <li>Tap <strong>'Install'</strong> when the prompt appears.</li>
+                            <li>The app will close to update (wait 10-15 seconds).</li>
+                            <li>If prompted: <em>"Allow Apps from Aqua-Aerobic Systems, Inc.?"</em> <br> <strong>- Tap "Allow & Restart"</strong></li>
+                        </ol>
 
-                        <div style="margin: 25px 0;">
+                        <div style="margin: 30px 0;">
                             <a href="itms-services://?action=download-manifest&amp;url=https://aquaaerobic.github.io/aquaguide.plist" 
                                class="btn btn-update-now">
                                GET UPDATE!
                             </a>
                         </div>
 
-                        <hr>
+                        <div class="help-box">
+                            <strong>First time or Reinstalling?</strong><br>
+                            Tap <a href="trust.html"><strong>HERE</strong></a> for assistance.
+                        </div>
 
+                        <hr>
                         <h4 style="text-align:left; font-size: 16px;">What's New:</h4>
                         <ul class="check-item">
                             <li>Corporate Notifications</li>
@@ -114,11 +116,10 @@
                         </ul>
 
                         <hr>
-                        
                         <p class="instruction-text" style="font-size: 13px;">
-                            <strong>Need Help?</strong><br>
-                            Watch the <a href="https://www.youtube.com/embed/B1kHaC_uzio?si=GSq4MzV9rVQAanIC" target="_blank">Video Guide</a> or 
-                            contact <a href="mailto:ckonkol@aqua-aerobic.com">Chuck Konkol</a> at <a href="tel:+18156394574">815-639-4574</a>.
+                            <strong>Technical Support:</strong><br>
+                            <a href="https://www.youtube.com/embed/B1kHaC_uzio?si=GSq4MzV9rVQAanIC" target="_blank">Watch Video Guide</a> | 
+                            <a href="mailto:ckonkol@aqua-aerobic.com">Email Developer</a>
                         </p>
                     </div>
                 </div>
@@ -128,8 +129,8 @@
 
     <footer>
         <div class="container text-center">
-            <p>©2025 Aqua-Aerobic Systems, Inc.</p>
-            <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">
+            <p>©2025 Aqua-Aerobic Systems, Inc. All Rights Reserved.</p>
+            <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666;">
                 Last Updated: March 30, 2026
             </p>
         </div>
