@@ -34,7 +34,7 @@
         const db = getFirestore(app);
 
         // March 30, 2026, 08:00:00 AM
-        const jsDate = new Date(2026, 2, 30, 8, 0, 0); 
+        const jsDate = new Date(2026, 2, 30, 0, 0, 0); 
         const startTimestamp = Timestamp.fromDate(jsDate);
 
         async function loadData() {
