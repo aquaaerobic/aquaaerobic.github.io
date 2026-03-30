@@ -4,27 +4,67 @@
     <meta charset="utf-8">
     <title>1-Minute App Update Log</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; background-color: #f4f7f6; }
-        .log-entry { margin: 0 auto 10px; width: 80%; background: white; border-radius: 8px; padding: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-left: 5px solid #28a745; }
-        .controls { text-align: center; margin-bottom: 20px; }
-        button { padding: 10px 25px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
-        button:hover { background: #0056b3; transform: scale(1.05); }
-        h1 { color: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background-color: #f4f7f6; color: #333; }
+        .log-entry { 
+            margin: 0 auto 10px; 
+            width: 85%; 
+            background: white; 
+            border-radius: 8px; 
+            padding: 15px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+            border-left: 5px solid #ccc; 
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+        }
+        /* Highlight style specifically for iPhones */
+        .iphone-style { border-left: 5px solid #007bff; background: #eef6ff; }
+        .iphone-label { color: #007bff; font-weight: bold; }
+        
+        .controls { text-align: center; margin-bottom: 25px; }
+        .summary-card { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 12px; 
+            display: inline-block; 
+            margin-bottom: 20px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        button { 
+            padding: 12px 30px; 
+            cursor: pointer; 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            font-size: 16px;
+            transition: 0.3s; 
+        }
+        button:hover { background: #0056b3; transform: translateY(-2px); }
+        h1 { margin-bottom: 10px; }
+        .timestamp { color: #888; font-size: 0.9em; }
     </style>
 </head>
 <body>
 
     <center>
         <h1>1-Minute App Update Log</h1>
-        <div class="controls">
-            <button id="refreshBtn">Refresh Log</button>
+        
+        <div id="summaryContainer" class="summary-card">
+            Fetching latest stats...
         </div>
+
+        <div class="controls">
+            <button id="refreshBtn">Refresh Data</button>
+        </div>
+
         <div id="results">Loading log...</div>
     </center>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, getCountFromServer, collection, query, where, orderBy, getDocs, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getFirestore, collection, query, where, orderBy, getDocs, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBu4FaHCylofeNVO5gHkyS4IYFcYZLOiA4",
@@ -40,16 +80,16 @@
 
         async function loadData() {
             const resultsDiv = document.getElementById("results");
-            resultsDiv.innerHTML = "<em>Updating...</em>";
+            const summaryDiv = document.getElementById("summaryContainer");
+            
+            resultsDiv.innerHTML = "<em>Updating logs...</em>";
 
-            // TARGET: Today at 8:00 AM local time
+            // Target 8:00 AM Today
             const startTimestamp = new Date();
             startTimestamp.setHours(8, 0, 0, 0); 
 
             try {
                 const tipsRef = collection(db, "users");
-                
-                // REMOVED "device == iPhone" to see all records (like the Windows ones in your screenshot)
                 const q = query(
                     tipsRef,
                     where("visited", "==", "APP UPDATE AVAILABLE - TAP HERE!"),
@@ -58,31 +98,51 @@
                 );
 
                 const querySnapshot = await getDocs(q);
-                const count = querySnapshot.size; // Using size from docs for immediate accuracy
-
-                let htmlContent = `<h2>Total Updates Today: <span style="color: #28a745;">${count}</span></h2><br>`;
-
-                if (count === 0) {
-                    htmlContent += "<p>No matches found. Ensure the 'device' field in Firestore matches your search and the index is created.</p>";
-                }
+                
+                let iphoneCount = 0;
+                let otherCount = 0;
+                let htmlContent = "";
 
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
-                    if (data.date) {
-                        const dateObj = data.date.toDate();
-                        htmlContent += `
-                            <div class="log-entry">
-                                <strong>Time:</strong> ${dateObj.toLocaleTimeString()} | 
-                                <strong>Device:</strong> ${data.device || 'Unknown'} | 
-                                <strong>Page:</strong> <span style="color: #666;">${data.visited}</span>
-                            </div>`;
-                    }
+                    const isIphone = data.device === "iPhone";
+                    
+                    if (isIphone) iphoneCount++;
+                    else otherCount++;
+
+                    const dateObj = data.date ? data.date.toDate() : new Date();
+                    
+                    htmlContent += `
+                        <div class="log-entry ${isIphone ? 'iphone-style' : ''}">
+                            <div>
+                                <span class="timestamp">${dateObj.toLocaleTimeString()}</span> | 
+                                <span class="${isIphone ? 'iphone-label' : ''}">${data.device || 'Unknown'}</span>
+                            </div>
+                            <div style="color: #666; font-size: 0.85em;">
+                                ${data.visited}
+                            </div>
+                        </div>`;
                 });
 
-                resultsDiv.innerHTML = htmlContent;
+                // Update Summary Card
+                summaryDiv.innerHTML = `
+                    <div style="display:flex; gap:40px; text-align:center;">
+                        <div>
+                            <div style="font-size: 2em; font-weight: bold; color: #28a745;">${iphoneCount + otherCount}</div>
+                            <div style="font-size: 0.8em; color: #666; text-transform: uppercase;">Total</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2em; font-weight: bold; color: #007bff;">${iphoneCount}</div>
+                            <div style="font-size: 0.8em; color: #666; text-transform: uppercase;">iPhones</div>
+                        </div>
+                    </div>
+                `;
+
+                resultsDiv.innerHTML = htmlContent || "<p>No matches found since 8:00 AM.</p>";
+
             } catch (error) {
                 console.error("Firestore Error:", error);
-                resultsDiv.innerHTML = `<div style="color:red;"><strong>Error:</strong> ${error.message}</div>`;
+                resultsDiv.innerHTML = `<div style="color:red; padding:20px;"><strong>Error:</strong> ${error.message}</div>`;
             }
         }
 
