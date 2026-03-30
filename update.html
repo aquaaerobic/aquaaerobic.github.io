@@ -1,175 +1,141 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
     <title>1-Minute Reference Guide | Aqua-Aerobic Systems, Inc.</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Catamaran:400,700|Muli" rel="stylesheet">
+    <link rel="stylesheet" href="css/new-age.min.css">
 
-    <!-- Custom Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <style>
+        body { font-family: 'Muli', sans-serif; }
+        
+        /* Mobile-friendly card style */
+        .update-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: #333;
+        }
 
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="lib/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="lib/device-mockups/device-mockups.min.css">
+        /* High-Visibility Button */
+        .btn-update-now {
+            background-color: #f9f406 !important;
+            color: #000 !important;
+            border: 2px solid #d4cf05 !important;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 18px 30px;
+            font-size: 20px;
+            border-radius: 50px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(249, 244, 6, 0.4);
+            animation: pulse-animation 2s infinite;
+        }
 
-    <!-- Theme CSS -->
-    <link href="css/new-age.min.css" rel="stylesheet">
+        @keyframes pulse-animation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-	 <style>
-    .container{
-        text-align: center;
-    }
-    h1{
-        color: green;
-    }
-    .custom-alert {
-      position: fixed;
-      top: 200px;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-  </style>
+        .btn-update-now:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(249, 244, 6, 0.6);
+            background-color: #fff !important;
+        }
+
+        .instruction-text {
+            text-align: left;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .check-item { list-style: none; padding-left: 0; text-align: left; }
+        .check-item li::before { content: "✅ "; margin-right: 5px; }
+
+        footer { padding: 30px 0; background: #222; color: #777; }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-content { padding: 40px 10px !important; }
+            h1 { font-size: 45px !important; }
+        }
+    </style>
 </head>
 
 <body id="page-top">
-	<style>
-    .container {
-        text-align: center;
-    }
-
-    h1 {
-        color: green;
-    }
-</style>
     <header>
         <div class="container">
             <div class="row">
-                <div class="col-sm-7">
-                    <div class="header-content" style="padding: 5px; 100px;">
+                <div class="col-sm-12 col-md-7">
+                    <div class="header-content">
                         <div class="header-content-inner">
-                            <h1 style="margin-bottom:5px;color: white;">AQUAGUIDE</h1>
-                            1-Minute Reference Guide
-                            <p style="font-size: 12px;margin-top: 5px;color:  #f9f406;margin-bottom: 5px;"><b>Required iPhone App Update</b></p><b>
-                        </b></div><b>
-                    </b></div><b>
-                </b></div><b>
-                <div class="col-sm-5">
-                    <div class="device-container">
-                        <p style="text-align:left" ;="">Update Instructions</p>
-                        <ol style="text-align:left" ;="">
-                            <li>Tap the 'GET UPDATE!' button below<br>(<i>from iPhone AQUAGUIDE app or Safari web browser</i>)</li><br>
-                            <li>When prompted, tap the 'Install' button.</li>
-				                        </ol>
-			     <ul style="text-align:left" ;="">  
-				<li>The app will close while updating!</li>
-        <li>Please allow 10-15 seconds for the update to complete.</li>
-        <li>Find and open the updated 'AquaGuide' app.<br><br><img src="updated.png" width=""><br><i>(the blue dot denotes recent update!)</i><br></li>
-        <br><li>If prompted:<br>"Allow Apps from Aqua-Aerobic Systems, Inc."?<br> - tap "Allow & Restart"</li>
-	<br><li>Installing for first time or reinstalling app? <br>Tap <b><a href="trust.html">HERE</a></b> for assistance</li>
-  </ul>
-                        <br>
-<center>
-	                           <!--    <button onclick="showAlert('1-Minute App Update', '<b>Available:</b><br>Monday, April 7th through<br>Thursday, May 1st 2025!<br><br><b>Please Come Back!</b>')" class="btn btn-outline btn-xl page-scroll" style="color: black;">Get Update!</button>-->
-                                 <a href="itms-services://?action=download-manifest&amp;url=https://aquaaerobic.github.io/aquaguide.plist" class="btn btn-outline btn-xl page-scroll">Get Update!</a>
-                                    </center>
-                        <br>
-                        <p style="text-align:left;">Updates</p>
-                       <ul style="text-align:left;">
- <li>✅ Faster page loading times</li>
- <li>✅ Updated notes</li>
- <li>✅ Apple security updates</li>
- <li>✅ Minor bug fixes</li>
-			       </ul>  
-			    <br>
-                        <p style="text-align:left" ;="">Need Help?</p>
-                        <ol style="text-align:left" ;="">
-                        <li>Click <a href="https://www.youtube.com/embed/B1kHaC_uzio?si=GSq4MzV9rVQAanIC" target="_blank">here</a> to watch video of how to update app!</li>
-                        <li>Having trouble opening the app or installing it for the first time? Tap <b><a href="trust.html">HERE</a></b> for assistance</li>
-                        <li>Still need help?<br>Contact our developer:</li>
-				<ul style="text-align: left;">
-  <li>Chuck Konkol</li>
-  <li>📧 Email: <br><a href="mailto:ckonkol@aqua-aerobic.com">ckonkol@aqua-aerobic.com</a></li>
-  <li>📞 Phone: <br><a href="tel:+18156394574">815-639-4574</a></li> 
-</ul>  
-                        </ol>
-                        <br> 
+                            <h1 style="color:white; font-weight: 900;">AQUAGUIDE</h1>
+                            <p style="font-size: 1.2em; opacity: 0.9;">1-Minute Reference Guide</p>
+                            <div class="visible-xs visible-sm" style="margin-top: 20px;">
+                                <i class="fa fa-chevron-down" style="color:#f9f406; font-size: 2em;"></i>
+                            </div>
+                        </div>
                     </div>
-                   
                 </div>
-               
-            </b></div><b>
-          
-        </b></div><b>
-       
-    </b></header><b>
+
+                <div class="col-sm-12 col-md-5">
+                    <div class="update-card">
+                        <h3 style="margin-top:0; font-weight:700;">Update Instructions</h3>
+                        <p class="instruction-text">
+                            1. Tap the button below.<br>
+                            2. Select <strong>'Install'</strong> when prompted.<br>
+                            3. The app will close to complete the update (10-15s).
+                        </p>
+
+                        <div style="margin: 25px 0;">
+                            <a href="itms-services://?action=download-manifest&amp;url=https://aquaaerobic.github.io/aquaguide.plist" 
+                               class="btn btn-update-now">
+                               GET UPDATE!
+                            </a>
+                        </div>
+
+                        <hr>
+
+                        <h4 style="text-align:left; font-size: 16px;">What's New:</h4>
+                        <ul class="check-item">
+                            <li>Corporate Notifications</li>
+                            <li>Apple Security Updates</li>
+                            <li>Yearly Apple Certificate</li>
+                            <li>Minor Bug Fixes</li>
+                        </ul>
+
+                        <hr>
+                        
+                        <p class="instruction-text" style="font-size: 13px;">
+                            <strong>Need Help?</strong><br>
+                            Watch the <a href="https://www.youtube.com/embed/B1kHaC_uzio?si=GSq4MzV9rVQAanIC" target="_blank">Video Guide</a> or 
+                            contact <a href="mailto:ckonkol@aqua-aerobic.com">Chuck Konkol</a> at <a href="tel:+18156394574">815-639-4574</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <footer>
-        <div class="container">
-            <p>©2025 Aqua-Aerobic Systems, Inc. All Rights Reserved.</p>
-    <!--        <ul class="list-inline">
-                <li>
-                    <a href="#">Privacy</a>
-                </li>
-                <li>
-                    <a href="#">Terms</a>
-                </li>
-                <li>
-                    <a href="#">FAQ</a>
-                </li>
-            </ul>
-	-->
+        <div class="container text-center">
+            <p>©2025 Aqua-Aerobic Systems, Inc.</p>
+            <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">
+                Last Updated: March 30, 2026
+            </p>
         </div>
     </footer>
 
-    <!-- jQuery -->
     <script src="lib/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="js/new-age.min.js"></script>
-
-
-
-
-
-
-
-<script>
-  function showAlert(title, message) {
-    // Create a custom alert box
-    const alertBox = document.createElement('div');
-    alertBox.className = 'custom-alert';
-    alertBox.innerHTML = `
-      <h2 style="font-size: 18px;">${title}</h2>
-      <p style="font-size: 12px;">${message}</p>
-      <button onclick="document.body.removeChild(this.parentElement)" style="font-size: 12px;">OK</button>
-    `;
-    document.body.appendChild(alertBox);
-  }
-</script>
-
-
-</b></body></html>
+</body>
+</html>
