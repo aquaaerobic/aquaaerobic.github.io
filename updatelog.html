@@ -38,34 +38,32 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // March 30, 2026, 08:00:00 AM
-        const jsDate = new Date(2026, 2, 30, 8, 0, 0); 
-        const startTimestamp = Timestamp.fromDate(jsDate);
-
         async function loadData() {
             const resultsDiv = document.getElementById("results");
             resultsDiv.innerHTML = "<em>Updating...</em>";
 
+            // TARGET: Today at 8:00 AM local time
+            const startTimestamp = new Date();
+            startTimestamp.setHours(8, 0, 0, 0); 
+
             try {
                 const tipsRef = collection(db, "users");
                 
-                // FILTER: Only show iPhone + Specific Visited Text + Since 8:00 AM
+                // REMOVED "device == iPhone" to see all records (like the Windows ones in your screenshot)
                 const q = query(
                     tipsRef,
-                    where("device", "==", "iPhone"),
                     where("visited", "==", "APP UPDATE AVAILABLE - TAP HERE!"),
-                    where("date", ">", startTimestamp),
+                    where("date", ">", Timestamp.fromDate(startTimestamp)),
                     orderBy("date", "desc")
                 );
 
                 const querySnapshot = await getDocs(q);
-                const snapshot = await getCountFromServer(q);
-                const count = snapshot.data().count;
+                const count = querySnapshot.size; // Using size from docs for immediate accuracy
 
                 let htmlContent = `<h2>Total Updates Today: <span style="color: #28a745;">${count}</span></h2><br>`;
 
                 if (count === 0) {
-                    htmlContent += "<p>No matches found for that specific text today.</p>";
+                    htmlContent += "<p>No matches found. Ensure the 'device' field in Firestore matches your search and the index is created.</p>";
                 }
 
                 querySnapshot.forEach((doc) => {
@@ -75,7 +73,7 @@
                         htmlContent += `
                             <div class="log-entry">
                                 <strong>Time:</strong> ${dateObj.toLocaleTimeString()} | 
-                                <strong>Date:</strong> ${dateObj.toLocaleDateString()} | 
+                                <strong>Device:</strong> ${data.device || 'Unknown'} | 
                                 <strong>Page:</strong> <span style="color: #666;">${data.visited}</span>
                             </div>`;
                     }
@@ -84,11 +82,7 @@
                 resultsDiv.innerHTML = htmlContent;
             } catch (error) {
                 console.error("Firestore Error:", error);
-                resultsDiv.innerHTML = `
-                    <div style="color:red; padding:20px; border:1px solid red; display:inline-block;">
-                        <strong>Query Error:</strong> ${error.message}<br>
-                        <small>If this is an index error, click the link in the F12 console.</small>
-                    </div>`;
+                resultsDiv.innerHTML = `<div style="color:red;"><strong>Error:</strong> ${error.message}</div>`;
             }
         }
 
