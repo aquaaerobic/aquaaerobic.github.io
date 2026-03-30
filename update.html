@@ -23,6 +23,22 @@
             color: #333;
         }
 
+        /* Countdown Timer Styling */
+        #countdown-container {
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px dashed #f9f406;
+            display: inline-block;
+            border-radius: 8px;
+        }
+
+        #timer {
+            font-weight: 800;
+            color: #f9f406;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
         /* High-Visibility Pulsing Button */
         .btn-update-now {
             background-color: #f9f406 !important;
@@ -30,7 +46,7 @@
             border: 2px solid #d4cf05 !important;
             font-weight: 800;
             padding: 18px 30px;
-            font-size: 20px;
+            font-size: 22px;
             border-radius: 50px;
             display: inline-block;
             text-decoration: none;
@@ -56,6 +72,12 @@
             line-height: 1.6;
         }
 
+        .support-links a {
+            color: #0056b3 !important;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
         .help-box {
             background-color: #f8f9fa;
             border-left: 5px solid #007bff;
@@ -79,7 +101,13 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <h1 style="color:white; font-weight: 900; margin-bottom: 10px;">AQUAGUIDE</h1>
-                            <p style="font-size: 1.3em; color: #f9f406;"><strong>iPhone App Update Required</strong></p>
+                            <p style="font-size: 1.3em; color: #fff; margin-bottom: 0;">1-Minute Reference Guide</p>
+                            
+                            <div id="countdown-container">
+                                <div style="color: #ccc; font-size: 12px; text-transform: uppercase;">Time remaining to update:</div>
+                                <div id="timer">Loading...</div>
+                                <div style="color: #f9f406; font-weight: bold; margin-top: 5px;">Deadline: 4/6/2026</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,29 +122,29 @@
                             <li>If prompted: <em>"Allow Apps from Aqua-Aerobic Systems, Inc.?"</em> <br> <strong>- Tap "Allow & Restart"</strong></li>
                         </ol>
 
-                        <div style="margin: 30px 0;">
+                        <div style="margin: 25px 0;">
                             <a href="itms-services://?action=download-manifest&amp;url=https://aquaaerobic.github.io/aquaguide.plist" 
                                class="btn btn-update-now">
                                GET UPDATE!
                             </a>
                         </div>
 
-                        <div class="help-box">
+                        <div class="help-box support-links">
                             <strong>First time or Reinstalling?</strong><br>
-                            Tap <a href="trust.html"><strong>HERE</strong></a> for assistance.
+                            Tap <a href="trust.html">HERE</a> for assistance.
                         </div>
 
                         <hr>
                         <h4 style="text-align:left; font-size: 16px;">What's New:</h4>
                         <ul class="check-item">
-                            <li>Corporate Notifications</li>
+                            <li>Updated Corporate Notifications</li>
                             <li>Apple Security Updates</li>
-                            <li>Yearly Apple Certificate</li>
+                            <li>Yearly Apple Certificate Renewal</li>
                             <li>Minor Bug Fixes</li>
                         </ul>
 
                         <hr>
-                        <p class="instruction-text" style="font-size: 13px;">
+                        <p class="instruction-text support-links" style="font-size: 14px; text-align: center;">
                             <strong>Technical Support:</strong><br>
                             <a href="https://www.youtube.com/embed/B1kHaC_uzio?si=GSq4MzV9rVQAanIC" target="_blank">Watch Video Guide</a> | 
                             <a href="mailto:ckonkol@aqua-aerobic.com">Email Developer</a>
@@ -129,7 +157,7 @@
 
     <footer>
         <div class="container text-center">
-            <p>©2025 Aqua-Aerobic Systems, Inc. All Rights Reserved.</p>
+            <p>©2026 Aqua-Aerobic Systems, Inc. All Rights Reserved.</p>
             <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666;">
                 Last Updated: March 30, 2026
             </p>
@@ -138,5 +166,26 @@
 
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+        // Countdown Timer Logic
+        const deadline = new Date("April 6, 2026 23:59:59").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = deadline - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown-container").innerHTML = "<div id='timer'>UPDATE EXPIRED</div>";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
