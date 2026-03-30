@@ -15,29 +15,39 @@
     <style>
         body { font-family: 'Muli', sans-serif; }
         
-        /* Reduce header height on mobile */
+        /* Desktop/Windows Header Height Fix */
+        header { 
+            min-height: auto !important; 
+            height: auto !important; 
+            padding-top: 40px !important; 
+            padding-bottom: 40px !important; 
+        }
+
+        /* Mobile Header Compression */
         @media (max-width: 767px) {
             header { padding-top: 20px !important; padding-bottom: 10px !important; }
             .header-content { padding: 0 !important; }
-            h1 { font-size: 35px !important; margin-top: 5px !important; }
+            h1 { font-size: 32px !important; margin-top: 5px !important; }
             .update-card { margin-top: 10px !important; padding: 15px !important; }
         }
 
         .rep-notice {
             background: #ff4d4d;
             color: white;
-            padding: 5px;
+            padding: 6px;
             font-weight: 800;
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            z-index: 10;
         }
 
         .update-card {
             background: rgba(255, 255, 255, 0.98);
             border-radius: 15px;
             padding: 20px;
-            margin-top: 20px;
+            margin-top: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             color: #333;
         }
@@ -48,6 +58,7 @@
             border: 1px dashed #f9f406;
             display: inline-block;
             border-radius: 8px;
+            background: rgba(0,0,0,0.1);
         }
 
         #timer { font-weight: 800; color: #f9f406; font-size: 18px; }
@@ -78,7 +89,8 @@
 
         .support-links a { color: #0056b3 !important; text-decoration: underline; font-weight: 600; }
         .help-box { background-color: #f8f9fa; border-left: 5px solid #007bff; padding: 10px; margin-top: 10px; text-align: left; font-size: 13px; }
-        .check-item { list-style: none; padding-left: 0; display: flex; flex-wrap: wrap; justify-content: center; font-size: 12px; }
+        
+        .check-item { list-style: none; padding-left: 0; display: flex; flex-wrap: wrap; justify-content: center; font-size: 12px; margin-bottom: 0; }
         .check-item li { margin: 2px 8px; }
         .check-item li::before { content: "✅ "; }
 
@@ -91,23 +103,21 @@
     <header>
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <div class="header-content">
-                        <div class="header-content-inner">
-                            <h1 style="color:white; font-weight: 900; margin-bottom: 5px;">AQUAGUIDE</h1>
-                            <p style="font-size: 1.1em; color: #fff; margin-bottom: 0;">1-Minute Reference Guide</p>
-                            
-                            <div id="countdown-container">
-                                <span id="timer">Loading...</span>
-                                <div style="color: #f9f406; font-size: 11px; font-weight: bold;">Deadline: 4/6/2026</div>
-                            </div>
+                <div class="col-sm-12 col-md-5">
+                    <div class="header-content" style="text-align: center;">
+                        <h1 style="color:white; font-weight: 900; margin-bottom: 5px;">AQUAGUIDE</h1>
+                        <p style="font-size: 1.1em; color: #fff; margin-bottom: 0;">1-Minute Reference Guide</p>
+                        
+                        <div id="countdown-container">
+                            <span id="timer">Loading...</span>
+                            <div style="color: #f9f406; font-size: 11px; font-weight: bold;">Deadline: 4/6/2026</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-7">
                     <div class="update-card text-center">
-                        <h4 style="margin-top:0; font-weight:700;">Instructions</h4>
+                        <h4 style="margin-top:0; font-weight:700; font-size: 16px;">Quick Update Instructions</h4>
                         <ol class="instruction-text">
                             <li>Tap <strong>'GET UPDATE!'</strong> & then <strong>'Install'</strong>.</li>
                             <li>App will close; wait 15 seconds.</li>
@@ -115,7 +125,7 @@
                             <li>If prompted, tap <strong>"Allow & Restart"</strong>.</li>
                         </ol>
 
-                        <div style="margin: 15px 0;">
+                        <div style="margin: 10px 0;">
                             <a href="itms-services://?action=download-manifest&amp;url=https://aquaaerobic.github.io/aquaguide.plist" class="btn btn-update-now">GET UPDATE!</a>
                         </div>
 
@@ -127,7 +137,7 @@
                         <ul class="check-item">
                             <li>Corporate Notifications</li>
                             <li>Security Updates</li>
-                            <li>Certificate Renewal</li>
+                            <li>Certificates</li>
                             <li>Bug Fixes</li>
                         </ul>
 
@@ -143,7 +153,7 @@
 
     <footer>
         <div class="container text-center">
-            <p style="margin-bottom: 5px;">©2026 Aqua-Aerobic Systems, Inc.</p>
+            <p style="margin-bottom: 5px; font-size: 12px;">©2026 Aqua-Aerobic Systems, Inc.</p>
             <p style="font-size: 10px; color: #666;">Updated: March 30, 2026</p>
         </div>
     </footer>
