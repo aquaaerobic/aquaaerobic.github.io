@@ -1,68 +1,220 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>1-Minute App Update Log</title>
-  <script type="module">
-    // Import the Firebase SDK modules
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getFirestore, getCountFromServer,collection, query, where, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-    import { Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-    // Your Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyBu4FaHCylofeNVO5gHkyS4IYFcYZLOiA4",
-  authDomain: "aquaguide2018.firebaseapp.com",
-  projectId: "aquaguide2018",
-  storageBucket: "aquaguide2018.firebasestorage.app",
-  messagingSenderId: "333575317068",
-  appId: "1:333575317068:web:5ab37f19fd58d8c96ab6e9"
-};
-
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const startDate = new Date("2026-03-29T06:00:00");
-    const TodaysDate = new Date();
-    console.log(startDate);
-    // Query Firestore
-    async function loadData() {
-      const tipsRef = collection(db, "users");
-      const searchString = "APP UPDATE AVAILABLE - TAP HERE!".trim();
-      const q = query(
-    tipsRef,
-    where("visited", "==", searchString),
-    where("device", "==", "iPhone"),
-    where("date", ">=", startDate),
-    orderBy("date", "desc"),
-    limit(1000)
-  );
-      const querySnapshot = await getDocs(q);
-
-      const resultsDiv = document.getElementById("results");
-      const snapshot = await getCountFromServer(q);
-      console.log("Published Tips Count:", snapshot.data().count);
-      resultsDiv.innerHTML = "<center>iPhone app update count is <b>" + snapshot.data().count + "</b></center><br>";
-      querySnapshot.forEach((doc) => {
-        const data = doc.data();
-  const date = data.date.toDate();
-  const formattedDate = date.toLocaleDateString();
-  const formTime = date.toLocaleTimeString();
-        resultsDiv.innerHTML += '<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Date: </strong>' + formattedDate + ' ' + formTime + '' + ', <strong>Device: </strong>' +  data.device + ', <strong>Visited Page: </strong> ' + data.visited + ', docid: ' + data.documentId + '</p>';
-      });
-
+  <meta charset="utf-8">
+  <title>AquaGuide App Activity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="bootstrap.min.css" rel="stylesheet" />
+  <link href="aqua.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* --- VIBRANT THEME OVERRIDES --- */
+    body { background-color: #121212; font-family: 'Lato', sans-serif; }
+    .navbar.bg-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      box-shadow: 0 4px 20px rgba(118, 75, 162, 0.5);
+      border: none;
     }
+    .page-header { padding: 2rem 1rem 1rem 1rem; color: white; }
+    .sticky-controls {
+      position: sticky; top: 0; z-index: 1020;
+      background-color: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 10px 0; border-bottom: 1px solid #333;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    }
+    .controls-panel label {
+      color: #a8c0ff; font-weight: bold; text-transform: uppercase;
+      font-size: 0.7rem; letter-spacing: 1px; margin-bottom: 2px;
+    }
+    .form-control {
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      color: #ffffff !important; font-size: 0.9rem;
+    }
+    .form-control:focus { border-color: #4facfe !important; }
+    .btn-success { background: linear-gradient(45deg, #11998e, #38ef7d) !important; border: none; font-weight: bold; }
+    .btn-info-outline { border: 1px solid #4facfe; color: #4facfe; background: transparent; font-size: 0.75rem; font-weight: bold; }
+    .btn-info-outline:hover { background: #4facfe; color: #000; }
+    .table-responsive { border-radius: 12px; overflow: hidden; border: 1px solid #333; }
+    .table-dark { background-color: #1a1a1a; }
+    .text-info { color: #00f260 !important; }
+    .badge-date { font-size: 0.85em; background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; padding: 4px 8px; }
+    .badge-count { font-size: 1rem; background: linear-gradient(45deg, #36D1DC, #5B86E5); color: white; border-radius: 20px; padding: 5px 15px; }
 
-    //</center>
-   
- 
-
-    // Load data on page load
-    window.addEventListener("DOMContentLoaded", loadData);
-  </script>
+    @media (max-width: 768px) {
+      .mobile-compact-row { margin-bottom: 10px; }
+      .btn-group-mobile { display: flex; width: 100%; gap: 5px; }
+      .btn-group-mobile button { flex: 1; padding: 8px 2px; font-size: 0.7rem; }
+    }
+  </style>
 </head>
 <body>
-  <center><h1>1-Minute App Update Log</h1></center>
-  <div id="results">Loading log...</div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand font-weight-bold" href="#"><i class="fas fa-water mr-2"></i>AquaGuide Activity Log</a>
+    </div>
+  </nav>
+
+  <div class="container page-header d-flex justify-content-between align-items-center">
+    <div>
+      <h1 class="display-4 font-weight-bold mb-0">User Activity</h1>
+      <p class="lead" style="color: #ccc;">Live tracking of device interactions.</p>
+    </div>
+    <div class="text-right">
+      <span class="badge badge-count"><i class="fas fa-list-ol mr-2"></i><span id="totalCount">0</span> Logs</span>
+    </div>
+  </div>
+
+  <div class="sticky-controls">
+    <div class="container">
+      <div class="controls-panel">
+        <div class="row align-items-end">
+          <div class="col-6 col-md-2 mobile-compact-row">
+            <label>Start Date</label>
+            <input type="date" id="startDate" class="form-control form-control-sm">
+          </div>
+          <div class="col-6 col-md-2 mobile-compact-row">
+            <label>End Date</label>
+            <input type="date" id="endDate" class="form-control form-control-sm">
+          </div>
+          <div class="col-12 col-md-3 mobile-compact-row">
+            <label>Search Filters</label>
+            <input type="text" id="searchInput" class="form-control form-control-sm" placeholder="Search device or menu...">
+          </div>
+          <div class="col-12 col-md-5 mobile-compact-row">
+            <div class="btn-group-mobile">
+              <button class="btn btn-info-outline btn-sm" onclick="quickFilter('iPhone')">iPhones</button>
+              <button class="btn btn-info-outline btn-sm" onclick="quickFilter('APP UPDATE')">Updates</button>
+              <button class="btn btn-primary btn-sm" onclick="generateShareLink()"><i class="fas fa-share-alt"></i> Share</button>
+              <button class="btn btn-success btn-sm" onclick="exportToCSV()"><i class="fas fa-file-download"></i> CSV</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div id="loader"><div class="spinner"></div></div>
+    <div id="dataContainer" style="display:none;">
+      <div class="table-responsive">
+        <table class="table table-hover table-dark mb-0" id="activityTable">
+          <thead>
+            <tr><th class="col-time">Timestamp</th><th class="col-device">Device</th><th class="col-menu">Menu Item</th></tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div id="paginationControls" class="d-flex justify-content-between align-items-center mt-3 mb-5">
+        <button id="btnPrev" class="btn btn-page btn-sm" onclick="changePage(-1)">Prev</button>
+        <span id="pageIndicator" class="text-white small">Page 1 of 1</span>
+        <button id="btnNext" class="btn btn-page btn-sm" onclick="changePage(1)">Next</button>
+      </div>
+      <div id="noResults" class="text-center p-5" style="display:none; color: #666;">
+        <h4><i class="fas fa-search-minus mb-3" style="font-size: 2rem;"></i></h4>
+        <p>No activity found matching your criteria.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-firestore.js"></script>
+
+  <script>
+    let allLogs = [], filteredLogs = [], currentPage = 1, logsPerPage = 20, db;
+
+    document.addEventListener("DOMContentLoaded", function() {
+      initFirebase();
+      initDateFilters();
+      applyUrlFilters(); // Handles incoming shared links
+      setupEventListeners();
+    });
+
+    function initFirebase() {
+      var config = { apiKey: "AIzaSyBu4FaHCylofeNVO5gHkyS4IYFcYZLOiA4", authDomain: "aquaguide2018.firebaseio.com", projectId: "aquaguide2018" };
+      firebase.initializeApp(config);
+      db = firebase.firestore();
+      fetchData();
+    }
+
+    function initDateFilters() {
+      const today = new Date();
+      const threeMonthsAgo = new Date();
+      threeMonthsAgo.setMonth(today.getMonth() - 3);
+      const toStr = (d) => d.toISOString().split('T');
+      document.getElementById('endDate').value = toStr(today);
+      document.getElementById('startDate').value = toStr(threeMonthsAgo);
+    }
+
+    function setupEventListeners() {
+      const reset = () => { currentPage = 1; renderTable(); };
+      ['searchInput', 'startDate', 'endDate'].forEach(id => document.getElementById(id).addEventListener('change', reset));
+      document.getElementById('searchInput').addEventListener('keyup', reset);
+    }
+
+    function fetchData() {
+      db.collection("users").orderBy("date", "desc").onSnapshot(snap => {
+        allLogs = [];
+        snap.forEach(doc => {
+          const data = doc.data();
+          const d = new Date(data.date);
+          allLogs.push({ rawDate: d, dateStr: d.toLocaleString(), device: data.device || "Unknown", visited: data.visited || "Unknown" });
+        });
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('dataContainer').style.display = 'block';
+        renderTable();
+      });
+    }
+
+    function renderTable() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const start = new Date(document.getElementById('startDate').value + "T00:00:00");
+      const end = new Date(document.getElementById('endDate').value + "T23:59:59");
+
+      filteredLogs = allLogs.filter(log => {
+        if (log.rawDate < start || log.rawDate > end) return false;
+        const text = (log.device + " " + log.visited).toLowerCase();
+        return !search || text.includes(search);
+      });
+
+      document.getElementById('totalCount').innerText = filteredLogs.length;
+      const totalPages = Math.ceil(filteredLogs.length / logsPerPage) || 1;
+      const pageData = filteredLogs.slice((currentPage - 1) * logsPerPage, currentPage * logsPerPage);
+
+      let html = '';
+      pageData.forEach(log => {
+        html += `<tr><td><span class="badge badge-date">${log.dateStr}</span></td><td class="text-white small">${log.device}</td><td class="text-info small">${log.visited}</td></tr>`;
+      });
+      document.getElementById('tableBody').innerHTML = html;
+      document.getElementById('noResults').style.display = filteredLogs.length ? 'none' : 'block';
+      document.getElementById('pageIndicator').innerText = `Page ${currentPage} of ${totalPages}`;
+    }
+
+    function quickFilter(val) { document.getElementById('searchInput').value = val; currentPage = 1; renderTable(); }
+
+    function generateShareLink() {
+      const s = document.getElementById('searchInput').value, start = document.getElementById('startDate').value, end = document.getElementById('endDate').value;
+      const url = `${window.location.origin}${window.location.pathname}?search=${encodeURIComponent(s)}&start=${start}&end=${end}`;
+      navigator.clipboard.writeText(url).then(() => alert("Filtered link copied to clipboard!"));
+    }
+
+    function applyUrlFilters() {
+      const p = new URLSearchParams(window.location.search);
+      if (p.has('search')) document.getElementById('searchInput').value = p.get('search');
+      if (p.has('start')) document.getElementById('startDate').value = p.get('start');
+      if (p.has('end')) document.getElementById('endDate').value = p.get('end');
+    }
+
+    function changePage(dir) { currentPage += dir; renderTable(); window.scrollTo({top: 0, behavior: 'smooth'}); }
+
+    function exportToCSV() {
+      let csv = "data:text/csv;charset=utf-8,Timestamp,Device,Menu Item\n";
+      filteredLogs.forEach(l => csv += `"${l.dateStr}","${l.device}","${l.visited.replace(/[=-]/g,"")}"\n`);
+      const link = document.createElement("a"); link.href = encodeURI(csv); link.download = "aquaguide_activity.csv"; link.click();
+    }
+  </script>
 </body>
 </html>
