@@ -33,50 +33,50 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // March 30, 2026, 08:00:00 AM
-        const jsDate = new Date(2026, 2, 30, 0, 0, 0); 
+        // March 30, 2026, 08:00:00 AM (local time)
+        const jsDate = new Date(2026, 2, 30, 8, 0, 0); 
         const startTimestamp = Timestamp.fromDate(jsDate);
+        console.log("Querying for dates after:", jsDate.toLocaleString());
 
         async function loadData() {
             const resultsDiv = document.getElementById("results");
-            
-            // Safety check: Don't run if the div isn't on the page yet
             if (!resultsDiv) return;
 
             resultsDiv.innerHTML = "Fetching latest logs...";
 
             try {
                 const tipsRef = collection(db, "users");
+                
+                // STEP 1: Simplified query to see if ANY iPhone updates exist
+                // If this works, the issue is likely the Date range or the specific 'visited' string.
                 const q = query(
                     tipsRef,
-                    where("visited", "==", "APP UPDATE AVAILABLE - TAP HERE!"),
                     where("device", "==", "iPhone"),
                     where("date", ">", startTimestamp),
-                    orderBy("date", "desc"),
-                    limit(1000)
+                    orderBy("date", "desc")
                 );
 
-                const [querySnapshot, snapshot] = await Promise.all([
-                    getDocs(q),
-                    getCountFromServer(q)
-                ]);
-
+                const querySnapshot = await getDocs(q);
+                const snapshot = await getCountFromServer(q);
                 const count = snapshot.data().count;
-                let htmlContent = `<h3>iPhone app update count since 8:00 AM: <b>${count}</b></h3><br>`;
+
+                let htmlContent = `<h3>Updates found: <b>${count}</b></h3><br>`;
 
                 if (count === 0) {
-                    htmlContent += "<p>No updates recorded yet today.</p>";
+                    htmlContent += "<p>No matches. Double check your Firestore field names (lowercase 'date'?) and the 'visited' string exactly.</p>";
                 }
 
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
+                    // We check the visited string manually here to debug
+                    const matchStatus = (data.visited === "APP UPDATE AVAILABLE - TAP HERE!") ? "✅" : "❌";
+                    
                     if (data.date) {
                         const dateObj = data.date.toDate();
                         htmlContent += `
                             <div class="log-entry" style="text-align: left;">
-                                <strong>Date:</strong> ${dateObj.toLocaleDateString()} ${dateObj.toLocaleTimeString()} | 
-                                <strong>Device:</strong> ${data.device} | 
-                                <strong>Action:</strong> ${data.visited}
+                                ${matchStatus} <strong>Date:</strong> ${dateObj.toLocaleDateString()} ${dateObj.toLocaleTimeString()} | 
+                                <strong>Visited:</strong> ${data.visited}
                             </div>`;
                     }
                 });
@@ -84,11 +84,11 @@
                 resultsDiv.innerHTML = htmlContent;
             } catch (error) {
                 console.error("Firestore Error:", error);
-                resultsDiv.innerHTML = `<span style="color:red;">Error: ${error.message}</span>`;
+                // CRITICAL: Check the console for a link to create an index!
+                resultsDiv.innerHTML = `<span style="color:red;">Error: ${error.message}</span><br><p>Check Browser Console for an Index Link.</p>`;
             }
         }
 
-        // Initialize on load and setup button
         document.addEventListener("DOMContentLoaded", () => {
             loadData();
             document.getElementById("refreshBtn").addEventListener("click", loadData);
