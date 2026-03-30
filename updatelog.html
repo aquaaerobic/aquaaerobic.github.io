@@ -28,9 +28,10 @@ const firebaseConfig = {
     // Query Firestore
     async function loadData() {
       const tipsRef = collection(db, "users");
+      const searchString = "APP UPDATE AVAILABLE - TAP HERE!".trim();
       const q = query(
     tipsRef,
-    where("visited", "==", "APP UPDATE AVAILABLE - TAP HERE!"),
+    where("visited", "==", searchString),
     where("device", "==", "iPhone"),
     where("date", ">=", startDate),
     orderBy("date", "desc"),
