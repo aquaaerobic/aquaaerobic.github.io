@@ -1,155 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>1-Minute App Update Log</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background-color: #f4f7f6; color: #333; }
-        .log-entry { 
-            margin: 0 auto 10px; 
-            width: 85%; 
-            background: white; 
-            border-radius: 8px; 
-            padding: 15px; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
-            border-left: 5px solid #ccc; 
-            display: flex; 
-            justify-content: space-between;
-            align-items: center;
-        }
-        /* Highlight style specifically for iPhones */
-        .iphone-style { border-left: 5px solid #007bff; background: #eef6ff; }
-        .iphone-label { color: #007bff; font-weight: bold; }
-        
-        .controls { text-align: center; margin-bottom: 25px; }
-        .summary-card { 
-            background: white; 
-            padding: 20px; 
-            border-radius: 12px; 
-            display: inline-block; 
-            margin-bottom: 20px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        button { 
-            padding: 12px 30px; 
-            cursor: pointer; 
-            background: #007bff; 
-            color: white; 
-            border: none; 
-            border-radius: 50px; 
-            font-weight: bold; 
-            font-size: 16px;
-            transition: 0.3s; 
-        }
-        button:hover { background: #0056b3; transform: translateY(-2px); }
-        h1 { margin-bottom: 10px; }
-        .timestamp { color: #888; font-size: 0.9em; }
-    </style>
+  <title>1-Minute App Update Log</title>
+  <script type="module">
+    // Import the Firebase SDK modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, getCountFromServer,collection, query, where, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    // Your Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyBu4FaHCylofeNVO5gHkyS4IYFcYZLOiA4",
+  authDomain: "aquaguide2018.firebaseapp.com",
+  projectId: "aquaguide2018",
+  storageBucket: "aquaguide2018.firebasestorage.app",
+  messagingSenderId: "333575317068",
+  appId: "1:333575317068:web:5ab37f19fd58d8c96ab6e9"
+};
+
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const startDate = new Date("2026-04-29T06:00:00");
+    const TodaysDate = new Date();
+    console.log(startDate);
+    // Query Firestore
+    async function loadData() {
+      const tipsRef = collection(db, "users");
+      const q = query(
+    tipsRef,
+    where("visited", "==", "APP UPDATE AVAILABLE - TAP HERE!"),
+    where("device", "==", "iPhone"),
+    where("date", ">=", startDate),
+    orderBy("date", "desc"),
+    limit(1000)
+  );
+      const querySnapshot = await getDocs(q);
+
+      const resultsDiv = document.getElementById("results");
+      const snapshot = await getCountFromServer(q);
+      console.log("Published Tips Count:", snapshot.data().count);
+      resultsDiv.innerHTML = "<center>iPhone app update count is <b>" + snapshot.data().count + "</b></center><br>";
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+  const date = data.date.toDate();
+  const formattedDate = date.toLocaleDateString();
+  const formTime = date.toLocaleTimeString();
+        resultsDiv.innerHTML += '<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Date: </strong>' + formattedDate + ' ' + formTime + '' + ', <strong>Device: </strong>' +  data.device + ', <strong>Visited Page: </strong> ' + data.visited + ', docid: ' + data.documentId + '</p>';
+      });
+
+    }
+
+    //</center>
+   
+ 
+
+    // Load data on page load
+    window.addEventListener("DOMContentLoaded", loadData);
+  </script>
 </head>
 <body>
-
-    <center>
-        <h1>1-Minute App Update Log</h1>
-        
-        <div id="summaryContainer" class="summary-card">
-            Fetching latest stats...
-        </div>
-
-        <div class="controls">
-            <button id="refreshBtn">Refresh Data</button>
-        </div>
-
-        <div id="results">Loading log...</div>
-    </center>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, query, where, orderBy, getDocs, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyBu4FaHCylofeNVO5gHkyS4IYFcYZLOiA4",
-            authDomain: "aquaguide2018.firebaseapp.com",
-            projectId: "aquaguide2018",
-            storageBucket: "aquaguide2018.firebasestorage.app",
-            messagingSenderId: "333575317068",
-            appId: "1:333575317068:web:5ab37f19fd58d8c96ab6e9"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        async function loadData() {
-            const resultsDiv = document.getElementById("results");
-            const summaryDiv = document.getElementById("summaryContainer");
-            
-            resultsDiv.innerHTML = "<em>Updating logs...</em>";
-
-            // Target 8:00 AM Today
-            const startTimestamp = new Date();
-            startTimestamp.setHours(8, 0, 0, 0); 
-
-            try {
-                const tipsRef = collection(db, "users");
-                const q = query(
-                    tipsRef,
-                    where("visited", "==", "APP UPDATE AVAILABLE - TAP HERE!"),
-                    where("date", ">", Timestamp.fromDate(startTimestamp)),
-                    orderBy("date", "desc")
-                );
-
-                const querySnapshot = await getDocs(q);
-                
-                let iphoneCount = 0;
-                let otherCount = 0;
-                let htmlContent = "";
-
-                querySnapshot.forEach((doc) => {
-                    const data = doc.data();
-                    const isIphone = data.device === "iPhone";
-                    
-                    if (isIphone) iphoneCount++;
-                    else otherCount++;
-
-                    const dateObj = data.date ? data.date.toDate() : new Date();
-                    
-                    htmlContent += `
-                        <div class="log-entry ${isIphone ? 'iphone-style' : ''}">
-                            <div>
-                                <span class="timestamp">${dateObj.toLocaleTimeString()}</span> | 
-                                <span class="${isIphone ? 'iphone-label' : ''}">${data.device || 'Unknown'}</span>
-                            </div>
-                            <div style="color: #666; font-size: 0.85em;">
-                                ${data.visited}
-                            </div>
-                        </div>`;
-                });
-
-                // Update Summary Card
-                summaryDiv.innerHTML = `
-                    <div style="display:flex; gap:40px; text-align:center;">
-                        <div>
-                            <div style="font-size: 2em; font-weight: bold; color: #28a745;">${iphoneCount + otherCount}</div>
-                            <div style="font-size: 0.8em; color: #666; text-transform: uppercase;">Total</div>
-                        </div>
-                        <div>
-                            <div style="font-size: 2em; font-weight: bold; color: #007bff;">${iphoneCount}</div>
-                            <div style="font-size: 0.8em; color: #666; text-transform: uppercase;">iPhones</div>
-                        </div>
-                    </div>
-                `;
-
-                resultsDiv.innerHTML = htmlContent || "<p>No matches found since 8:00 AM.</p>";
-
-            } catch (error) {
-                console.error("Firestore Error:", error);
-                resultsDiv.innerHTML = `<div style="color:red; padding:20px;"><strong>Error:</strong> ${error.message}</div>`;
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            loadData();
-            document.getElementById("refreshBtn").addEventListener("click", loadData);
-        });
-    </script>
+  <center><h1>1-Minute App Update Log</h1></center>
+  <div id="results">Loading log...</div>
 </body>
 </html>
