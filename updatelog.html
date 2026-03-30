@@ -30,7 +30,7 @@ const firebaseConfig = {
       const tipsRef = collection(db, "users");
       const q = query(
     tipsRef,
-    where("visited", "==", "- TAP HERE (Deadline: 4/6/2026)"),
+    where("visited", "==", "APP UPDATE AVAILABLE - TAP HERE!"),
     where("device", "==", "iPhone"),
     where("date", ">=", startDate),
     orderBy("date", "desc"),
