@@ -1,18 +1,80 @@
-<hr>
-		<p align="left"><b>TRUST APP 
-			       </b><ul>
-	<li>When you first open the app you see a notification that the app isn't trusted on your device. You can dismiss this message.</li>
-	<br><img src="2.png" width="100"><br><br>		       
-	<li>Tap <b>Settings > General > VPN & Device Management > Aqua-Aerobic Systems, Inc.</b></li>
-	<br><img src="3.png" width="250"><br><br>	
-	<li>Tap <b>Trust "Aqua-Aerobic Systems, Inc"</b></li>
-        <br><img src="4.png" width="250"><br><br>
-	<li>Tap <b>Trust</b> prompt to verify that you trust the app<br>(If prompted: "Allow Apps from Aqua-Aerobic Systems, Inc."?, tap "Allow & Restart")</li>
-	<br><img src="5.png" width="250"><br>
-	<i>Apple now requires your iPhone<br>to reverify periodically to maintain trust. </i>
-	<li>Upon restart you will be prompted to <b>swipe Up</b> and install new profile.</li>	
-	<li>Open app <img src="2.png" width="100"> and Tap <b>Allow Notifications</b></li>
-        <br><img src="7.png" width="250"><br><br>
-	<li>You are now ready to use the app</li>
-        <li>Enjoy!</li><br><br>
-			       </ul>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Trust App Instructions | Aqua-Aerobic Systems, Inc.</title>
+
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Catamaran:400,700|Muli:400,800" rel="stylesheet">
+    <link rel="stylesheet" href="css/new-age.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body { font-family: 'Muli', sans-serif; background-color: #2b2b2b; }
+        
+        header { 
+            min-height: auto !important; 
+            height: auto !important; 
+            padding-top: 25px !important; 
+            padding-bottom: 25px !important; 
+        }
+
+        @media (max-width: 767px) {
+            header { padding-top: 15px !important; padding-bottom: 5px !important; }
+            h1 { font-size: 28px !important; margin-bottom: 0 !important; }
+            .update-card { margin-top: 5px !important; padding: 12px !important; }
+        }
+
+        /* Blinking Red Notification Bar */
+        .rep-notice {
+            background: #ff4d4d;
+            color: white;
+            padding: 5px;
+            font-weight: 800;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: notice-breath 3s ease-in-out infinite;
+        }
+
+        @keyframes notice-breath {
+            0%, 100% { background-color: #ff4d4d; }
+            50% { background-color: #b30000; }
+        }
+
+        .update-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            color: #333;
+        }
+
+        .btn-update-now {
+            background-color: #f9f406 !important;
+            color: #000 !important;
+            font-weight: 800;
+            padding: 12px 28px;
+            font-size: 16px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(249, 244, 6, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-update-now i { margin-right: 10px; font-size: 18px; }
+        .btn-update-now:hover { transform: translateY(-2px); background: #fff !important; color: #000 !important; text-decoration: none; }
+
+        .instruction-text { text-align: left; font-size: 14px; line-height: 1.5; margin-bottom: 10px; padding-left: 20px; }
+        .instruction-text li { margin-bottom: 15px; }
+        .instruction-text img { max-width: 100%; height: auto; border-radius: 6px; margin-top: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+        .help-box { background-color: #f1f3f5; border-left: 4px solid #007bff; padding: 12px; margin: 15px 0; text-align: left; font-size: 13px; font-style: italic; }
