@@ -1,36 +1,263 @@
-<!DOCTYPE HTML>
-<html><head>
-<meta charset='utf-8'>
-<title></title>
-<meta http-equiv="refresh" id="mymetatag" content="10;URL="/>
-</HEAD>
+<!DOCTYPE html>
+<html>
+<head>
+<title>AquaGuide PDF Viewer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<style>
+body, html { margin: 0; padding: 0; height: 100%; background-color: #f0f0f2; font-family: -apple-system, sans-serif; overflow: hidden; }
+
+#loading {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: #ffffff; z-index: 100000;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: opacity 0.5s ease;
+}
+
+.spinner {
+    width: 50px; height: 50px;
+    border: 5px solid #e0e0e0; border-top: 5px solid #00529c;
+    border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.loading-text { color: #333; font-weight: 500; font-size: 16px; }
+
+#failsafe-btn { display: none; margin-top: 20px; padding: 10px 20px; background: #00529c; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; }
+
+#viewer-container {
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#pdf-container {
+    width: 100%;
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* Nav Buttons */
+
+.nav-btn {
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 0px) + 10px);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: rgba(0, 82, 156, 0.65);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    backdrop-filter: blur(12px);
+    z-index: 99999;
+}
+
+#back-btn { left: 12px; }
+#reload-btn { left: 50%; transform: translateX(-50%); }
+#share-btn { right: 12px; }
+</style>
+
+<!-- PDF.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script>
+
+function getUrlParam(name){
+    var url = window.location.search;
+    var num = url.search(name);
+    var namel = name.length;
+    var frontlength = namel+num+1;
+    var front = url.substring(0, frontlength);
+    url = url.replace(front, "");
+    num = url.search("&");
+    if(num>=0) return url.substr(0,num);
+    if(num<0)  return url;
+}
+
+var globalPdfUrl = getUrlParam("url");
+var isIosPwaMode = ("standalone" in navigator && navigator.standalone);
+
+
+async function initIosViewer(url){
+
+    const viewer = document.getElementById("viewer-container");
+    const loadingScreen = document.getElementById("loading");
+    const container = document.getElementById("pdf-container");
+
+    const pdf = await pdfjsLib.getDocument(url).promise;
+
+    for(let pageNum=1; pageNum<=pdf.numPages; pageNum++){
+
+        const page = await pdf.getPage(pageNum);
+
+        const viewport = page.getViewport({ scale:1.5 });
+
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        container.appendChild(canvas);
+
+        await page.render({
+            canvasContext:context,
+            viewport:viewport
+        }).promise;
+    }
+
+    loadingScreen.style.opacity = "0";
+    viewer.style.display = "block";
+
+    setTimeout(()=>{
+        loadingScreen.style.display="none";
+    },500);
+}
+
+
+function goBackUpOneLevel() {
+   localStorage.setItem('returnFromViewer', 'true');
+   let url = window.location.href.split('?')[0];
+   url = url.substring(0, url.lastIndexOf('/'));
+   url = url.substring(0, url.lastIndexOf('/'));
+   window.location.href = url + '/index.html';
+}
+
+async function sharePdfFile() {
+
+    const shareBtn = document.getElementById("share-btn");
+    const filename = decodeURIComponent(globalPdfUrl.split('/').pop()) || "Document.pdf";
+
+    try {
+
+        const response = await fetch(globalPdfUrl);
+        const blob = await response.blob();
+
+        const file = new File([blob], filename, {type:"application/pdf"});
+
+        await navigator.share({
+            files:[file],
+            title:filename,
+            text:filename
+        });
+
+    } catch(e){
+
+        window.location.href =
+        "mailto:?subject="+encodeURIComponent(filename)+
+        "&body="+encodeURIComponent(filename);
+
+    }
+}
+
+</script>
+</head>
+
 <body>
-<center>
-    <br>
-<h1>...Loading, Please Wait!</h1>    
-<div id="url2"></div>
-</center>
+
+<div id="loading">
+<div class="spinner"></div>
+<div class="loading-text">Loading Document...</div>
+<a id="failsafe-btn" href="#" onclick="window.open(globalPdfUrl); return false;">Open Externally</a>
+</div>
+
+
+<div id="viewer-container">
+
+<a id="back-btn" class="nav-btn" href="#" onclick="goBackUpOneLevel(); return false;">Back</a>
+
+<a id="reload-btn" class="nav-btn" href="#" onclick="location.reload(); return false;">Reload</a>
+
+<a id="share-btn" class="nav-btn" href="#" onclick="sharePdfFile(); return false;">Share</a>
+
+<div id="pdf-container"></div>
+
+</div>
+
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyBu4FaHCylofeNVO5gHkyS4IYFcYZLOiA4",
+authDomain: "aquaguide2018.firebaseapp.com",
+projectId: "aquaguide2018",
+storageBucket: "aquaguide2018.appspot.com",
+messagingSenderId: "333575317068",
+appId: "1:333575317068:web:5ab37f19fd58d8c96ab6e9"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+function getDeviceType(){
+let device = "Unknown";
+const ua = {
+"Android": /Android/i,
+"iPad": /iPad/i,
+"iPhone": /iPhone/i,
+"Windows": /Windows/i,
+"macOS": /Macintosh/i
+};
+Object.keys(ua).map(v => navigator.userAgent.match(ua[v]) && (device = v));
+return device;
+}
+
+async function startProcess(){
+
+if (!globalPdfUrl) return;
+
+try{
+
+let filename = globalPdfUrl.split('/').pop();
+if (filename.includes("?")) filename = filename.split("?")[0];
+
+// Sign in first (same as the main web app). Reuses the saved anonymous user when there is one.
+const logAction = signInAnonymously(auth).then(() => addDoc(collection(db, "users"), {
+date: Timestamp.fromDate(new Date()),
+device: getDeviceType(),
+visited: filename + " (PDF)"
+})).catch(e => console.error("Activity log failed:", e));
+
+// Give sign-in + write time to finish before navigating away to the PDF
+await Promise.race([logAction,new Promise(r=>setTimeout(r,3000))]);
+
+}catch(e){ console.error("Activity log failed:", e); }
+
+if (isIosPwaMode){
+
+initIosViewer(globalPdfUrl);
+
+}else{
+
+window.location.replace(globalPdfUrl);
+
+}
+
+}
+
+startProcess();
+
+</script>
+
 </body>
-<script type="text/javascript">
-    getwebsite();
-    function getwebsite() {
-        var geturl = get("url");
-        //ocument.getElementById("url2").innerHTML = geturl;
-        document.getElementById("mymetatag").setAttribute("content","3;URL='" + geturl + "'");
-        //return geturl;
-    }
-    
-    function get(name){
-        var url = window.location.search;
-        var num = url.search(name);
-        var namel = name.length;
-        var frontlength = namel+num+1; //length of everything before the value
-        var front = url.substring(0, frontlength);
-        url = url.replace(front, "");
-        num = url.search("&");
-        if(num>=0) return url.substr(0,num);
-        if(num<0)  return url;
-    }
-    
-    </script>
 </html>
