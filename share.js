@@ -10,6 +10,8 @@ var firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore();
+  // Sign in anonymously (same as the main web app) so log writes pass the Firestore rules
+  var authReady = firebase.auth().signInAnonymously();
 function get(name){
     var url = window.location.search;
     var num = url.search(name);
@@ -47,12 +49,14 @@ var section = "";
                                  var name = val.aqua_name;
                                  var menu = val.aqua_menu;
                                  var id = val.aqua_key;
-                                 if (id === geturl){   
-    db.collection("users").add({
-    date: myTimestamp,
-    device: devicetype,
-    visited: name
-})
+                                 if (id === geturl){
+    authReady.then(function() {
+        return db.collection("users").add({
+            date: myTimestamp,
+            device: devicetype,
+            visited: name
+        });
+    })
 .then(function(docRef) {
     console.log("Document written with ID: ", docRef.id);
 })
